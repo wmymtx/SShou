@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\Product.cs" />
     <Compile Include="SShouConsts.cs" />
     <Compile Include="SShouCoreModule.cs" />
     <Compile Include="Authorization\SShouAuthorizationProvider.cs" />

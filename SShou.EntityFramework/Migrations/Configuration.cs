@@ -14,6 +14,8 @@ namespace SShou.Migrations
         {
             AutomaticMigrationsEnabled = false;
             ContextKey = "SShou";
+            //指定使用MySQL的SQL生成器
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(SShou.EntityFramework.SShouDbContext context)

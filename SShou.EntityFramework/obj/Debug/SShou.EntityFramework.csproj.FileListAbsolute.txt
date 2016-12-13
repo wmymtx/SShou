@@ -13,6 +13,8 @@ D:\myWork\SShou\SShou.EntityFramework\bin\Debug\EntityFramework.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\EntityFramework.DynamicFilters.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\myWork\SShou\SShou.EntityFramework\bin\Debug\MySql.Data.dll
+D:\myWork\SShou\SShou.EntityFramework\bin\Debug\MySql.Data.Entity.EF6.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\Newtonsoft.Json.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\Nito.AsyncEx.Concurrent.dll
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\Nito.AsyncEx.dll
@@ -64,5 +66,4 @@ D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.Upgrade_To_Abp_
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.csproj.GenerateResource.Cache
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.dll
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.pdb
-D:\myWork\SShou\SShou.EntityFramework\bin\Debug\MySql.Data.dll
-D:\myWork\SShou\SShou.EntityFramework\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.product.resources

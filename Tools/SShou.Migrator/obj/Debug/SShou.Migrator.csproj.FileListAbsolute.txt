@@ -24,6 +24,8 @@ D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.Core.dll
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.EntityFramework.dll
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\System.Collections.Immutable.dll
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\System.Linq.Dynamic.dll
+D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\MySql.Data.dll
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.Core.pdb
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.EntityFramework.pdb
 D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\Abp.pdb

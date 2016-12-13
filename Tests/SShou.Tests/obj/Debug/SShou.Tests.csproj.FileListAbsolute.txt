@@ -35,6 +35,8 @@ D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\System.Linq.Dynamic.dll
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\xunit.assert.dll
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\xunit.core.dll
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\xunit.execution.desktop.dll
+D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\MySql.Data.dll
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.Application.pdb
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.Core.pdb
 D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.EntityFramework.pdb

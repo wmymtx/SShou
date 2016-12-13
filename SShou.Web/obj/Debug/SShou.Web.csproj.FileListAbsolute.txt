@@ -39,6 +39,8 @@ D:\myWork\SShou\SShou.Web\bin\Microsoft.Owin.Security.Google.dll
 D:\myWork\SShou\SShou.Web\bin\Microsoft.Owin.Security.OAuth.dll
 D:\myWork\SShou\SShou.Web\bin\Microsoft.Owin.Security.Twitter.dll
 D:\myWork\SShou\SShou.Web\bin\Microsoft.Web.Infrastructure.dll
+D:\myWork\SShou\SShou.Web\bin\MySql.Data.dll
+D:\myWork\SShou\SShou.Web\bin\MySql.Data.Entity.EF6.dll
 D:\myWork\SShou\SShou.Web\bin\Newtonsoft.Json.dll
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.Concurrent.dll
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.dll

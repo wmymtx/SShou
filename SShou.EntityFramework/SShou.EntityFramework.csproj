@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201612051741057_Upgrade_To_Abp_Zero_v1_1.Designer.cs">
       <DependentUpon>201612051741057_Upgrade_To_Abp_Zero_v1_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612131450433_product.cs" />
+    <Compile Include="Migrations\201612131450433_product.Designer.cs">
+      <DependentUpon>201612131450433_product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SShouDataModule.cs" />
@@ -213,7 +217,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612051741057_Upgrade_To_Abp_Zero_v1_1.resx">
       <DependentUpon>201612051741057_Upgrade_To_Abp_Zero_v1_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131450433_product.resx">
+      <DependentUpon>201612131450433_product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
