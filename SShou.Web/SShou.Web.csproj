@@ -355,6 +355,9 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="css\common.css" />
+    <Content Include="css\jquery-weui.css" />
+    <Content Include="css\jquery-weui.min.css" />
     <Content Include="css\main.css">
       <DependentUpon>main.less</DependentUpon>
     </Content>
@@ -369,11 +372,51 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\icon_nav_actionSheet.png" />
+    <Content Include="images\icon_nav_article.png" />
+    <Content Include="images\icon_nav_button.png" />
+    <Content Include="images\icon_nav_calendar.png" />
+    <Content Include="images\icon_nav_cell.png" />
+    <Content Include="images\icon_nav_city.png" />
+    <Content Include="images\icon_nav_datetime.png" />
+    <Content Include="images\icon_nav_dialog.png" />
+    <Content Include="images\icon_nav_icons.png" />
+    <Content Include="images\icon_nav_msg.png" />
+    <Content Include="images\icon_nav_noti.png" />
+    <Content Include="images\icon_nav_panel.png" />
+    <Content Include="images\icon_nav_photo.png" />
+    <Content Include="images\icon_nav_picker.png" />
+    <Content Include="images\icon_nav_progress.png" />
+    <Content Include="images\icon_nav_ptr.png" />
+    <Content Include="images\icon_nav_search_bar.png" />
+    <Content Include="images\icon_nav_select.png" />
+    <Content Include="images\icon_nav_swiper.png" />
+    <Content Include="images\icon_nav_tab.png" />
+    <Content Include="images\icon_nav_toast.png" />
+    <Content Include="images\icon_nav_up.png" />
+    <Content Include="images\pic_article.png" />
+    <Content Include="images\present.png" />
+    <Content Include="images\swiper-1.jpg" />
+    <Content Include="images\swiper-2.jpg" />
+    <Content Include="images\swiper-2.png" />
+    <Content Include="images\vcode.jpg" />
+    <Content Include="js\city-picker.js" />
+    <Content Include="js\city-picker.min.js" />
+    <Content Include="js\common.js" />
+    <Content Include="js\jquery-weui.js" />
+    <Content Include="js\jquery-weui.min.js" />
     <Content Include="js\main.js" />
     <Content Include="css\main.less" />
     <Content Include="css\main.css.map">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="js\swiper.js" />
+    <Content Include="js\swiper.min.js" />
+    <Content Include="lib\fastclick.js" />
+    <Content Include="lib\jquery-2.1.4.js" />
+    <Content Include="lib\weui.css" />
+    <Content Include="lib\weui.min.css" />
+    <Content Include="lib\zepto.js" />
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
@@ -453,12 +496,18 @@
     <Compile Include="App_Start\SShouWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Common\JsonResultStatus.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Helper\GuidToLong.cs" />
     <Compile Include="Models\Layout\UserMenuOrLoginLinkViewModel.cs" />
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -493,6 +542,10 @@
     <Content Include="Views\Layout\_UserMenuOrLoginLink.cshtml" />
     <Content Include="Views\Tenants\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Info\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

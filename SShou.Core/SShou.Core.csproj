@@ -94,7 +94,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\OrderItems.cs" />
+    <Compile Include="Entitys\Orders.cs" />
     <Compile Include="Entitys\Product.cs" />
+    <Compile Include="IRepository\IOrderItemsRepository.cs" />
+    <Compile Include="IRepository\IOrderRepository.cs" />
+    <Compile Include="IRepository\IProductRepository.cs" />
     <Compile Include="SShouConsts.cs" />
     <Compile Include="SShouCoreModule.cs" />
     <Compile Include="Authorization\SShouAuthorizationProvider.cs" />

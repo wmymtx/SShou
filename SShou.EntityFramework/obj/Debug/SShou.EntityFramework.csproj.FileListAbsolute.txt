@@ -67,3 +67,7 @@ D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.csproj.Gen
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.dll
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.EntityFramework.pdb
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.product.resources
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.AddOrders.resources
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.updateOrders.resources
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.updateOrders1220.resources
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations.or.resources

@@ -1,0 +1,156 @@
+﻿
+@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+    
+    @Styles.Render("~/Bundles/cus_css")
+    <style type="text/css">
+        body {
+            padding-bottom: 50px;
+        }
+    </style>
+    
+</head>
+<body ontouchstart>
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img src="~/images/swiper-1.jpg" /></div>
+            <div class="swiper-slide"><img src="~/images/swiper-2.jpg" /></div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="weui_grids">
+        @foreach (var p in ViewBag.productList)
+        {
+            <a id="@p.Id" class="weui_grid js_grid">
+                <div class="weui_grid_icon">
+                    <img src="@p.Prcd_ImgPath" alt="">
+                </div>
+                <p class="weui_grid_label">
+                    @p.Prcd_Name
+                </p>
+            </a>
+        }
+        @*<a id="1" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_button.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                废纸
+            </p>
+        </a>
+        <a id="2" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_cell.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                废塑料
+            </p>
+        </a>
+        <a id="3" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_article.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                废电器
+            </p>
+        </a>
+        <a id="4" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_dialog.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                废旧衣物
+            </p>
+        </a>
+        <a id="5" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_actionSheet.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                废旧电池
+            </p>
+        </a>
+        <a id="6" class="weui_grid js_grid">
+            <div class="weui_grid_icon">
+                <img src="~/images/icon_nav_toast.png" alt="">
+            </div>
+            <p class="weui_grid_label">
+                其他
+            </p>
+        </a>*@
+    </div>
+    <div id="btnNext" class="navbar-fixed-bottom">
+        <a href="javascript:;" class="weui_btn weui_btn_primary">下一步</a>
+    </div>
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script>
+  var array = [];
+  $(function() {
+    FastClick.attach(document.body);
+	$(".weui_grids a").each(function(){
+		$(this).click(function(){
+			var id = $(this).attr("id");
+			var obj = $(this).attr("tag");
+			if(obj == undefined || obj == 0){
+				$(this).attr("tag",1);
+				$(this).css("background-color","#FFFFB0");
+				array.push(id);
+			}
+			else{
+				$(this).attr("tag",0);
+				$(this).css("background-color","");
+				for(var i = 0; i< array.length; i++) {
+					if(array[i] == id) {
+						array.splice(i, 1);
+						break;
+					}
+				}
+			}
+		});
+	});
+	$("#btnNext").click(function(){
+		if(array.length == 0){
+			$.toast("选择废品种类", "forbidden");
+		}
+		else{
+			var items = array.toString();
+			var url = "../Order/Index?items=" + items;
+			window.location.href = url;
+			$.showLoading();
+		}
+	});
+  });
+    </script>
+    <script src="~/js/jquery-weui.js"></script>
+    <script src="~/js/swiper.js"></script>
+    <script>
+  $(".swiper-container").swiper({
+    loop: true,
+    autoplay: 3000
+  });
+    </script>
+</body>
+</html>

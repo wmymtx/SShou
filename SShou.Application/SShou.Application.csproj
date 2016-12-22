@@ -102,6 +102,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Orders\Dto\OrderInputDto.cs" />
+    <Compile Include="Orders\Dto\OrderInputDtos.cs" />
+    <Compile Include="Orders\Dto\OrderItemsInputDto.cs" />
+    <Compile Include="Orders\Dto\OrderOuputDto.cs" />
+    <Compile Include="Orders\IOrderAppService.cs" />
+    <Compile Include="Orders\OrderAppService.cs" />
+    <Compile Include="Product\Dto\ProductListDto.cs" />
+    <Compile Include="Product\IProductAppService.cs" />
+    <Compile Include="Product\ProductAppService.cs" />
     <Compile Include="SShouApplicationModule.cs" />
     <Compile Include="SShouAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />

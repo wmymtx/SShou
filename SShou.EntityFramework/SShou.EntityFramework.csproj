@@ -126,6 +126,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Repositories\OrderItemsRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="EntityFramework\SShouDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\SShouRepositoryBase.cs" />
     <Compile Include="Migrations\201506210746108_AbpZero_Initial.cs" />
@@ -203,6 +206,22 @@
     <Compile Include="Migrations\201612131450433_product.cs" />
     <Compile Include="Migrations\201612131450433_product.Designer.cs">
       <DependentUpon>201612131450433_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201356199_AddOrders.cs" />
+    <Compile Include="Migrations\201612201356199_AddOrders.Designer.cs">
+      <DependentUpon>201612201356199_AddOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201420167_updateOrders.cs" />
+    <Compile Include="Migrations\201612201420167_updateOrders.Designer.cs">
+      <DependentUpon>201612201420167_updateOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201447227_updateOrders1220.cs" />
+    <Compile Include="Migrations\201612201447227_updateOrders1220.Designer.cs">
+      <DependentUpon>201612201447227_updateOrders1220.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612211351266_or.cs" />
+    <Compile Include="Migrations\201612211351266_or.Designer.cs">
+      <DependentUpon>201612211351266_or.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -285,6 +304,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612131450433_product.resx">
       <DependentUpon>201612131450433_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201356199_AddOrders.resx">
+      <DependentUpon>201612201356199_AddOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201420167_updateOrders.resx">
+      <DependentUpon>201612201420167_updateOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201447227_updateOrders1220.resx">
+      <DependentUpon>201612201447227_updateOrders1220.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211351266_or.resx">
+      <DependentUpon>201612211351266_or.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

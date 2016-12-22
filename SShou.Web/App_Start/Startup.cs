@@ -22,7 +22,9 @@ namespace SShou.Web
         public void Configuration(IAppBuilder app)
         {
             app.UseAbp();
-           
+
+            
+
             app.UseOAuthBearerAuthentication(AccountController.OAuthBearerOptions);
             
             app.UseCookieAuthentication(new CookieAuthenticationOptions

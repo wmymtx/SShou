@@ -28,3 +28,4 @@ D:\myWork\SShou\SShou.Core\bin\Debug\Nito.AsyncEx.Enlightenment.xml
 D:\myWork\SShou\SShou.Core\bin\Debug\System.Collections.Immutable.xml
 D:\myWork\SShou\SShou.Core\obj\Debug\SShou.Core.dll
 D:\myWork\SShou\SShou.Core\obj\Debug\SShou.Core.pdb
+D:\myWork\SShou\SShou.Core\obj\Debug\SShou.Core.csprojResolveAssemblyReference.cache

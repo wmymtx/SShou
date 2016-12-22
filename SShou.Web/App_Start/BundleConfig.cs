@@ -21,6 +21,8 @@ namespace SShou.Web
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
                 );
 
+            bundles.Add(new StyleBundle("~/Bundles/cus_css").Include("~/css/common.css").Include("~/css/jquery-weui.min.css"));
+
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
             bundles.Add(
                 new ScriptBundle("~/Bundles/vendor/js/top")

@@ -73,7 +73,7 @@ namespace SShou.Web.Controllers
                 new LoginFormViewModel
                 {
                     ReturnUrl = returnUrl,
-                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled
+                    IsMultiTenancyEnabled = false //_multiTenancyConfig.IsEnabled
                 });
         }
 

@@ -10,6 +10,7 @@ using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using SShou.Api;
 using Hangfire;
+using Abp.Configuration.Startup;
 
 namespace SShou.Web
 {
@@ -35,6 +36,7 @@ namespace SShou.Web
             //{
             //    configuration.GlobalConfiguration.UseSqlServerStorage("Default");
             //});
+            Configuration.Modules.AbpWeb().AntiForgery.IsEnabled = false;
         }
 
         public override void Initialize()
