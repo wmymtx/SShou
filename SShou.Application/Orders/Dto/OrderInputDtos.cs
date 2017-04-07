@@ -10,9 +10,15 @@ namespace SShou.Orders.Dto
     {
         public string Address { get; set; }
 
+        public string RecUserName { get; set; }
+
+        public string RecPhone { get; set; }
+
         public string Remark { get; set; }
 
         public string Time { get; set; }
+
+        public int OrderType { get; set; }
 
         public List<Items> Order { get; set; }
     }
@@ -24,5 +30,7 @@ namespace SShou.Orders.Dto
         public string Value { get; set; }
 
         public string Prod_Name { get; set; }
+
+        public string Unit { get; set; }
     }
 }

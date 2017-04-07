@@ -2,6 +2,7 @@
 using Abp.Castle.Logging.Log4Net;
 using Abp.Web;
 using Castle.Facilities.Logging;
+using Senparc.Weixin.MP.Containers;
 
 namespace SShou.Web
 {
@@ -12,7 +13,7 @@ namespace SShou.Web
             AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
                 f => f.UseAbpLog4Net().WithConfig("log4net.config")
             );
-            
+            AccessTokenContainer.Register(Common.CommonConst.AppID, Common.CommonConst.AppSecret);
             base.Application_Start(sender, e);
         }
     }

@@ -10,5 +10,6 @@ namespace SShou.IRepository
     public interface IOrderItemsRepository : IRepository<Entitys.OrderItems>
     {
         void CreateOrderItems(IList<Entitys.OrderItems> orderItems);
+        List<Entitys.OrderItems> QueryOrderItems(string orderId);
     }
 }

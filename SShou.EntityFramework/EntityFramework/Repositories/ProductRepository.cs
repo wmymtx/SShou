@@ -17,16 +17,17 @@ namespace SShou.EntityFramework.Repositories
         /// 获取回收类型
         /// </summary>
         /// <returns></returns>
-        public IList<Product> GetProduct()
+        public IList<Product> GetProduct(int type)
         {
-            return GetAll().ToList();
+            return GetAll().Where(o => o.Type == type).OrderBy(o=>o.Sort).ToList();
         }
 
         public IList<Entitys.Product> GetProductById(string ids)
         {
             var query = GetAll();
-           
-            return query.Where(o => ids.Contains(o.Id.ToString())).ToList();
+            string[] param = ids.Split(',');
+
+            return query.Where(o => param.Contains(o.Id.ToString())).ToList();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SShou.Orders
         }
 
         [UnitOfWork]
-        public bool CreateOrder(OrderInputDto order,IList<Dto.OrderItemsInputDto> orderItems)
+        public bool CreateOrder(OrderInputDto order, IList<Dto.OrderItemsInputDto> orderItems)
         {
             try
             {
@@ -33,6 +33,51 @@ namespace SShou.Orders
             {
                 return false;
             }
+        }
+
+        public List<Dto.OrderOuputDto> QueryOrders(string uid, int pageIndex, int pageSize)
+        {
+            return _orderRepository.QueryOrder(uid, pageIndex, pageSize).MapTo<List<Dto.OrderOuputDto>>();
+        }
+
+        public List<Dto.OrderOuputDto> QueryOrderByStatus(int status, int pageIndex, int pageSize, string orderDate, int OrderType, string endTime)
+        {
+            return _orderRepository.QueryOrderByStatus(status, pageIndex, pageSize, orderDate, OrderType, endTime).MapTo<List<Dto.OrderOuputDto>>();
+        }
+
+        public List<Dto.OrderItemsOutputDto> QueryOrderItems(string orderId)
+        {
+            return _orderItemsRepository.QueryOrderItems(orderId).MapTo<List<Dto.OrderItemsOutputDto>>();
+        }
+
+        public int QueryOrderCoutByStatus(int status, string orderDate, int OrderType, string endTime)
+        {
+            return _orderRepository.QueryOrderCoutByStatus(status, orderDate, OrderType, endTime);
+        }
+
+        public Dto.OrderOuputDto QueryByOrderId(string orderId)
+        {
+            return _orderRepository.QueryByOrderId(orderId).MapTo<Dto.OrderOuputDto>();
+        }
+
+        public List<Dto.OrderOuputDto> QueryOrders(int status)
+        {
+            return _orderRepository.QueryOrders(status).MapTo<List<Dto.OrderOuputDto>>();
+        }
+
+        public Dto.OrderOuputDto CancelOrder(string id)
+        {
+            return _orderRepository.CancelOrder(id).MapTo<Dto.OrderOuputDto>();
+        }
+
+        public Dto.OrderOuputDto OrderAssign(Dto.UserAssignInputDto input)
+        {
+            var orderInfo = _orderRepository.QueryByOrderId(input.Id);
+            orderInfo.ProsonId = input.ProsonId;
+            orderInfo.PersonName = input.PersonName;
+            orderInfo.PhoneNo = input.PhoneNo;
+            orderInfo.Status = 1;
+            return _orderRepository.OrderAssign(orderInfo).MapTo<Dto.OrderOuputDto>();
         }
     }
 }

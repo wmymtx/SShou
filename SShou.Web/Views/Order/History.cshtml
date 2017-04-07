@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收回收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+
+    <link href="~/lib/weui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/jquery-weui.css">
+    <link rel="stylesheet" href="~/css/common.css">
+    <link href="~/css/labs.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/lib/jquery.raty.css">
+</head>
+<body ontouchstart>
+    <!-- body 顶部加上如下代码 -->
+    <div class="weui-pull-to-refresh-layer">
+        <div class="pull-to-refresh-arrow"></div> <!-- 上下拉动的时候显示的箭头 -->
+        <div class="pull-to-refresh-preloader"></div> <!-- 正在刷新的菊花 -->
+        <div class="down">下拉刷新</div><!-- 下拉过程显示的文案 -->
+        <div class="up">释放刷新</div><!-- 下拉超过50px显示的文案 -->
+        <div class="refresh">正在刷新...</div><!-- 正在刷新时显示的文案 -->
+    </div>
+
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_panel_hd">我的订单</div>
+        <div id="list" class="weui_panel_bd">
+            @*<div id="1" class="weui_media_box weui_media_text">
+                    <h4 class="weui_media_title">2016年12月31日</h4>
+                    <p class="weui_media_desc">废纸、衣服</p>
+                    <ul class="weui_media_info">
+                        <li class="weui_media_info_meta">飞翔的企鹅</li>
+                        <li class="weui_media_info_meta">未评分</li>
+                    </ul>
+                </div>
+                <div id="2" class="weui_media_box weui_media_text">
+                    <h4 class="weui_media_title">2016年12月31日</h4>
+                    <p class="weui_media_desc">电器、其他</p>
+                    <ul class="weui_media_info">
+                        <li class="weui_media_info_meta">飞翔的企鹅</li>
+                        <li class="weui_media_info_meta">未评分</li>
+                    </ul>
+                </div>*@
+        </div>
+
+    </div>
+    <div id="about" class="weui-popup-container">
+        <div class="weui-popup-overlay"></div>
+        <div class="weui-popup-modal">
+            <div class="weui_cells_title">商家评分</div>
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell">
+                    <div id="default"></div>
+                </div>
+                <a href="javascript:;" class="weui_btn weui_btn_primary close-popup" id="btnOk">确定</a>
+                <a href="javascript:;" class="weui_btn weui_btn_primary close-popup" id="btnCancel">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script src="~/lib/jquery.raty.js"></script>
+    <script src="~/Views/Order/History.js?t=6"></script>
+
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+            historyPage.historyIndex();
+            historyPage.InitPage();
+            $('#default').raty({
+                click: function (score, evt) {
+                    historyPage.score = score;
+                }
+            });
+        });
+    </script>
+    <script src="~/js/jquery-weui.js"></script>
+</body>
+</html>

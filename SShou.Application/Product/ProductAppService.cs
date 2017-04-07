@@ -22,9 +22,9 @@ namespace SShou.Product
         /// 获取产品列表
         /// </summary>
         /// <returns></returns>
-        public IList<Dto.ProductListDto> GetProduct()
+        public IList<Dto.ProductListDto> GetProduct(int type)
         {
-            return this._prodRepository.GetProduct().MapTo<IList<Dto.ProductListDto>>();
+            return this._prodRepository.GetProduct(type).MapTo<IList<Dto.ProductListDto>>();
         }
 
         public IList<Dto.ProductListDto> GetProductById(string ids)

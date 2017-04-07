@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SShou.Web.Helper
 {
-   public class GuidToLong
+    public class GuidToLong
     {
         /// <summary>
         /// 根据GUID获取19位的唯一数字序列
@@ -20,6 +20,12 @@ namespace SShou.Web.Helper
         public static string GuidToOrderId()
         {
             string orderId = "O" + GuidToLongID().ToString() + DateTime.Now.ToString("HHmmsss");
+            return orderId;
+        }
+
+        public static string OrderId()
+        {
+            string orderId = "028" + DateTime.Now.ToString("yyyyMMddHHmmsss") + GuidToLongID().ToString().Substring(6, 2);
             return orderId;
         }
     }

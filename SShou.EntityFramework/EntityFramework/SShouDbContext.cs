@@ -13,6 +13,34 @@ namespace SShou.EntityFramework
         public IDbSet<Entitys.Product> Product { get; set; }
         public IDbSet<Entitys.Orders> Orders { get; set; }
         public IDbSet<Entitys.OrderItems> OrderItems { get; set; }
+        public IDbSet<Entitys.SS_User> SS_User { get; set; }
+        public IDbSet<Entitys.WeUser> WeUser { get; set; }
+        /// <summary>
+        /// 积分日志
+        /// </summary>
+        public IDbSet<Entitys.PointsLog> PointsLog { get; set; }
+
+        /// <summary>
+        /// 上门地址管理
+        /// </summary>
+        public IDbSet<Entitys.UserAddress> UserAddress { get; set; }
+
+        /// <summary>
+        /// 用户登录日志
+        /// </summary>
+        public IDbSet<Entitys.UserLoginLog> UserLoginLog { get; set; }
+
+        public IDbSet<Entitys.UserDynamicInfo> UserDynamicInfo { get; set; }
+
+        public IDbSet<Entitys.SsCategory> SsCategory { get; set; }
+
+        /// <summary>
+        /// 订单评论
+        /// </summary>
+        public IDbSet<Entitys.OrderComment> OrderComment { get; set; }
+
+        public IDbSet<Entitys.AbpUser> AbpUser { get; set; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

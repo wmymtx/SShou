@@ -94,12 +94,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\OrderComment.cs" />
     <Compile Include="Entitys\OrderItems.cs" />
     <Compile Include="Entitys\Orders.cs" />
+    <Compile Include="Entitys\PointsLog.cs" />
     <Compile Include="Entitys\Product.cs" />
+    <Compile Include="Entitys\SsCategory.cs" />
+    <Compile Include="Entitys\SS_User.cs" />
+    <Compile Include="Entitys\AbpUser.cs" />
+    <Compile Include="Entitys\UserAddress.cs" />
+    <Compile Include="Entitys\UserLoginLog.cs" />
+    <Compile Include="Entitys\UserDynamicInfo.cs" />
+    <Compile Include="Entitys\WeUser.cs" />
+    <Compile Include="IRepository\IOrderCommentRepository.cs" />
     <Compile Include="IRepository\IOrderItemsRepository.cs" />
     <Compile Include="IRepository\IOrderRepository.cs" />
+    <Compile Include="IRepository\IPointsLogRepository.cs" />
     <Compile Include="IRepository\IProductRepository.cs" />
+    <Compile Include="IRepository\IRegisterWeChatRepository.cs" />
+    <Compile Include="IRepository\ISsCategoryRepository.cs" />
+    <Compile Include="IRepository\ISsUserRepository.cs" />
+    <Compile Include="IRepository\IUserAddressRepository.cs" />
+    <Compile Include="IRepository\IUserDynamicInfoRepository.cs" />
+    <Compile Include="IRepository\IUserLoginLogRepository.cs" />
+    <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="SShouConsts.cs" />
     <Compile Include="SShouCoreModule.cs" />
     <Compile Include="Authorization\SShouAuthorizationProvider.cs" />

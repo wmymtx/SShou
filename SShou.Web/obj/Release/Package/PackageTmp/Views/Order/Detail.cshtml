@@ -1,0 +1,86 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+	<link rel="stylesheet" href="~/css/jquery-weui.css">
+    <title>订单详情</title>
+    @Styles.Render("~/Bundles/cus_css")
+    <style type="text/css">
+        body {
+            padding-bottom: 50px;
+        }
+		.item_label{
+			padding-left:10px;
+			border-top:1px solid #dcdcdc;
+			line-height:40px;
+			vertical-align:middle;
+		}
+    </style>
+</head>
+<body ontouchstart>
+<div class="weui_cells_title">废品情况</div>
+<div class="weui_cells" id="orderItems"></div>
+<div class="weui_cells_title">派单情况（订单动态通过微信或短信提醒请关注）</div>
+<div class="weui_cells">
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>联系人</p>
+        </div>
+        <div class="weui_cell_ft" id="person"></div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>联系人电话</p>
+        </div>
+        <div class="weui_cell_ft" id="phone"></div>
+    </div>
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>订单状态</p>
+    </div>
+    <div class="weui_cell_ft" id="preview_order_status"></div>
+  </div>
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>收货人</p>
+    </div>
+    <div class="weui_cell_ft" id="preview_ssperson"></div>
+  </div>
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>收货人电话</p>
+    </div>
+    <div class="weui_cell_ft" id="preview_ssphone"></div>
+  </div>
+</div>
+<a href="javascript:;" class="weui_btn weui_btn_warn" id="btnCancel" style="display:none">撤 单</a>
+ <script src="~/lib/jquery-2.1.4.js"></script>
+ <script src="~/lib/fastclick.js"></script>
+ <script src="~/js/jquery-weui.js"></script>
+ @*//<script src="~/Scripts/pageManager.js?t=6"></script>*@
+ <script src="~/Views/Order/OrderList.js?t=s8"></script>
+ <script type="text/javascript">
+     $(function () {
+         var orderId = '@ViewBag.orderId';
+         orderHelper.ExecParam.getDetailData(orderId);
+     });
+
+ </script>
+</body>
+</html>

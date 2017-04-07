@@ -14,5 +14,7 @@ namespace SShou.Users
         Task<ListResultDto<UserListDto>> GetUsers();
 
         Task CreateUser(CreateUserInput input);
+
+        Dto.UserLoginOutputDto LoginIn(Dto.UserLoginInputDto user);
     }
 }

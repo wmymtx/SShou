@@ -3,7 +3,9 @@ using Abp.Web.Mvc.Authorization;
 
 namespace SShou.Web.Controllers
 {
-    [AbpMvcAuthorize]
+    //[AbpMvcAuthorize]
+    //[Common.Authorization]
+    [Authorize]
     public class HomeController : SShouControllerBase
     {
         public ActionResult Index()

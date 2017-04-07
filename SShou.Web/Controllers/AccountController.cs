@@ -35,6 +35,7 @@ namespace SShou.Web.Controllers
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
         private readonly LogInManager _logInManager;
+        private readonly IUserAppService userLoginAppService;
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -50,7 +51,7 @@ namespace SShou.Web.Controllers
             RoleManager roleManager,
             IUnitOfWorkManager unitOfWorkManager,
             IMultiTenancyConfig multiTenancyConfig,
-            LogInManager logInManager)
+            LogInManager logInManager, IUserAppService _userLoginAppService)
         {
             _tenantManager = tenantManager;
             _userManager = userManager;
@@ -58,6 +59,7 @@ namespace SShou.Web.Controllers
             _unitOfWorkManager = unitOfWorkManager;
             _multiTenancyConfig = multiTenancyConfig;
             _logInManager = logInManager;
+            userLoginAppService = _userLoginAppService;
         }
 
         #region Login / Logout
@@ -79,18 +81,20 @@ namespace SShou.Web.Controllers
 
         [HttpPost]
         [DisableAuditing]
-        public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
+        public JsonResult Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             CheckModelState();
-
-            var loginResult = await GetLoginResultAsync(
-                loginModel.UsernameOrEmailAddress,
+            loginModel.TenancyName = "Default";
+            //var loginResult = await GetLoginResultAsync(
+            //    loginModel.UsernameOrEmailAddress,
+            //    loginModel.Password,
+            //    loginModel.TenancyName
+            //    );
+            var loginResult = GetLoginResultAsync(loginModel.UsernameOrEmailAddress,
                 loginModel.Password,
-                loginModel.TenancyName
-                );
-
-            await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
-
+                loginModel.TenancyName);
+            //await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
+            SignIn(loginResult);
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
                 returnUrl = Request.ApplicationPath;
@@ -104,9 +108,10 @@ namespace SShou.Web.Controllers
             return Json(new AjaxResponse { TargetUrl = returnUrl });
         }
 
-        private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
+        private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync1(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+            //var loginResult= userAppService.LoginIn(new Users.Dto.UserLoginInputDto() {  UserName= usernameOrEmailAddress });
 
             switch (loginResult.Result)
             {
@@ -117,11 +122,42 @@ namespace SShou.Web.Controllers
             }
         }
 
+        private Users.Dto.UserLoginOutputDto GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
+        {
+            // var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+            var loginResult = userLoginAppService.LoginIn(new Users.Dto.UserLoginInputDto() { UserName = usernameOrEmailAddress });
+            return loginResult;
+            //switch (loginResult.Result)
+            //{
+            //    case AbpLoginResultType.Success:
+            //        return loginResult;
+            //    default:
+            //        throw CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
+            //}
+        }
+
         private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false)
         {
             if (identity == null)
             {
+                
                 identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            }
+
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
+        }
+
+        private void SignIn(Users.Dto.UserLoginOutputDto user, ClaimsIdentity identity = null, bool rememberMe = false)
+        {
+            if (identity == null)
+            {
+                var claims = new List<Claim>//创建我们的Claim
+     {
+           new Claim(ClaimTypes.Name, user.UserName),
+           new Claim(ClaimTypes.Email, user.UserName)
+     };
+                identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
             }
 
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
@@ -180,7 +216,7 @@ namespace SShou.Web.Controllers
             try
             {
                 CheckModelState();
-
+                _multiTenancyConfig.IsEnabled = false;
                 //Get tenancy name and tenant
                 if (!_multiTenancyConfig.IsEnabled)
                 {
@@ -272,7 +308,7 @@ namespace SShou.Web.Controllers
                     }
                     else
                     {
-                        loginResult = await GetLoginResultAsync(user.UserName, model.Password, tenant.TenancyName);
+                        loginResult = await GetLoginResultAsync1(user.UserName, model.Password, tenant.TenancyName);
                     }
 
                     if (loginResult.Result == AbpLoginResultType.Success)

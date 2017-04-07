@@ -11,16 +11,17 @@ using Microsoft.AspNet.Identity;
 namespace SShou.Users
 {
     /* THIS IS JUST A SAMPLE. */
-    [AbpAuthorize(PermissionNames.Pages_Users)]
+   // [AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : SShouAppServiceBase, IUserAppService
     {
         private readonly IRepository<User, long> _userRepository;
         private readonly IPermissionManager _permissionManager;
-
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager)
+        private readonly IRepository.IUserRepository userLoginRepository;
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, IRepository.IUserRepository _userLoginRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
+            userLoginRepository = _userLoginRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -55,6 +56,11 @@ namespace SShou.Users
             user.IsEmailConfirmed = true;
 
             CheckErrors(await UserManager.CreateAsync(user));
+        }
+
+        public Dto.UserLoginOutputDto LoginIn(Dto.UserLoginInputDto user)
+        {
+            return userLoginRepository.LoginIn(user.MapTo<Entitys.AbpUser>()).MapTo<Dto.UserLoginOutputDto>();
         }
     }
 }

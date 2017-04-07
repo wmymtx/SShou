@@ -1,0 +1,201 @@
+﻿
+@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收回收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+    <link rel="stylesheet" href="~/css/jquery-weui.css">
+    <link rel="stylesheet" href="~/css/common.css">
+    @Styles.Render("~/Bundles/cus_css")
+</head>
+<body ontouchstart>
+    <div class="weui_cells_title">个人信息</div>
+    <div class="weui_cells weui_cells_radio">
+        <label class="weui_cell weui_check_label" for="x11">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>家庭</p>
+            </div>
+            <div class="weui_cell_ft">
+                <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked" value="1">
+                <span class="weui_icon_checked"></span>
+            </div>
+        </label>
+        <label class="weui_cell weui_check_label" for="x12">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>店铺</p>
+            </div>
+            <div class="weui_cell_ft">
+                <input type="radio" name="radio1" class="weui_check" id="x12" value="2">
+                <span class="weui_icon_checked"></span>
+            </div>
+        </label>
+        @*<label class="weui_cell weui_check_label" for="x12">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>店铺</p>
+            </div>
+            <div class="weui_cell_ft">
+                <input type="radio" name="radio1" class="weui_check" id="x12" value="2">
+                <span class="weui_icon_checked"></span>
+            </div>
+        </label>*@
+    </div>
+    <div class="weui_panel weui_panel_access">
+        <div id="order" class="weui_panel_hd">
+            <img src="@ViewBag.HeadImgUrl" class="headImg" />
+        </div>
+
+    </div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">昵称</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" id="nickName" type="text" placeholder="请输入昵称" value="@ViewBag.NickName" maxlength="20">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="phoneNo" class="weui_input" type="tel" placeholder="请输入手机号" maxlength="11">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">推荐人</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="tel" id="RecommendCode" placeholder="请输入推荐人">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">地&nbsp;&nbsp;&nbsp;&nbsp;址</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="address" class="weui_input" type="text" placeholder="请输入地址" maxlength="100">
+            </div>
+        </div>
+    </div>
+    <div id="submit" style="padding-top:30px">
+        <a href="javascript:;" class="weui_btn weui_btn_primary">提交</a>
+    </div>
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script src="~/js/jquery-weui.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var openId = "@ViewBag.OpenId";
+            var headImgUrl = "@ViewBag.HeadImgUrl";
+            FastClick.attach(document.body);
+
+            $("#submit").click(function () {
+                var error = [];
+                var array = [];
+                var address = $.trim($("#address").val());
+                var phoneNo = $.trim($("#phoneNo").val());
+                var _nickName = $.trim($("#nickName").val());
+                var chkRadio = $('input:radio[name="radio1"]:checked').val();
+                var RecommendCode = $("#RecommendCode").val();
+
+
+                if (address == "") {
+                    error.push("请输入居住地址！");
+                }
+                if (_nickName == "") {
+                    error.push("请输入昵称！");
+                }
+
+                if (error.length == 0) {
+                    var json = '{"PhoneNo":"' + phoneNo + '","Address":"' + address + '","HeadImgUrl":"' + headImgUrl + '","OpenId":"' + openId + '","NickName":"' + _nickName + '","UserType":"' + chkRadio + '","Recommend_Code":"' + RecommendCode + '"}';
+                    $.ajax({
+                        url: '../RegisterWeChat/RegisterUser', type: 'POST',
+                        dataType: 'json',
+                        data: JSON.parse(json),
+                        beforeSend: function (xhr) {
+                            console.log(xhr);
+                            console.log('发送前');
+                            $.showLoading("正在处理...");
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data)
+                            console.log(textStatus)
+                            console.log(jqXHR);
+                            if (data.Code == 200) {
+                                var url = "@ViewBag.retUrl";
+                                window.location.href = url;
+                                $.showLoading();
+                            } else {
+                                error.push(data.Msg);
+                                $.toptip(data.Msg, 'warning');
+                            }
+                        },
+                        error: function (xhr, textStatus) {
+                            console.log('错误')
+                            console.log(xhr)
+                            console.log(textStatus)
+                        },
+                        complete: function () {
+                            console.log('结束');
+                            $.hideLoading();
+                        }
+                    });
+
+
+                }
+                else {
+                    $.toptip(error[0], 'warning');
+                }
+            });
+            $("#app_type label").each(function (i) {
+                $(this).click(function () {
+                    $("#time_list .weui_cells").each(function (j) {
+                        if (i == j) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    });
+                });
+            });
+            $("#set_time").click(function () {
+                var index = $("input[type='radio']:checked").val();
+                var obj = $("#time");
+                if (index == 0) obj.text($("#appointment").val());
+                else if (index == 1) obj.text("周六周日" + $("#weekend").val());
+                $.closePopup();
+            });
+            $('#remark').bind('input propertychange', function () {
+                $("#length").text($(this).val().length);
+            });
+            // 加的效果
+            $(".add").click(function () {
+                var n = $(this).prev().val();
+                var num = parseInt(n) + 1;
+                if (num == 0) { return; }
+                $(this).prev().val(num);
+            });
+            // 减的效果
+            $(".jian").click(function () {
+                var n = $(this).next().val();
+                var num = parseInt(n) - 1;
+                if (num == 0) { return }
+                $(this).next().val(num);
+            });
+        });
+    </script>
+    <script src="~/js/jquery-weui.js"></script>
+</body>
+</html>

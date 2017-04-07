@@ -17,5 +17,7 @@ namespace SShou.Orders.Dto
         public int ProductNum { get; set; }
 
         public string ProductId { get; set; }
+
+        public  string Unit { get; set; }
     }
 }

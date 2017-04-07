@@ -16,7 +16,7 @@ namespace SShou.Entitys
         [ForeignKey("F_OrderId")]
         public virtual Orders Orders { get; set; }
 
-        [Column(TypeName = "varchar"), MaxLength(30)]
+        [Column(TypeName = "nvarchar"), MaxLength(30)]
         public virtual string ProductName { get; set; }
 
         [Column(TypeName = "int")]
@@ -24,5 +24,8 @@ namespace SShou.Entitys
 
         [Column(TypeName = "varchar"), MaxLength(3)]
         public virtual string ProductId { get; set; }
+
+        [Column(TypeName = "varchar"), MaxLength(6)]
+        public virtual string Unit { get; set; }
     }
 }

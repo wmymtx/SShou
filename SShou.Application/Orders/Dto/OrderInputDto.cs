@@ -18,9 +18,15 @@ namespace SShou.Orders.Dto
 
         public string Address { get; set; }
 
+        public string RecUserName { get; set; }
+
+        public string RecPhone { get; set; }
+
         public string RecTime { get; set; }
 
-        public virtual int Status { get; set; }
+        public int Status { get; set; }
+
+        public int OrderType { get; set; }
 
         //[Column(TypeName = "varchar"), MaxLength(20)]
         //public virtual string ProsonId { get; set; }

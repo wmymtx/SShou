@@ -36,3 +36,4 @@ D:\myWork\SShou\SShou.Application\bin\Debug\System.Collections.Immutable.xml
 D:\myWork\SShou\SShou.Application\obj\Debug\SShou.Application.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\SShou.Application\obj\Debug\SShou.Application.dll
 D:\myWork\SShou\SShou.Application\obj\Debug\SShou.Application.pdb
+D:\myWork\SShou\SShou.Application\bin\Debug\SShou.Core.dll.config

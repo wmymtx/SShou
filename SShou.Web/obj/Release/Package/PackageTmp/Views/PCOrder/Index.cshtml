@@ -1,0 +1,169 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
+}
+
+@*2、bootstrap组件引用*@
+@*3、bootstrap table组件以及中文包的引用*@
+
+<link href="~/Content/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<div>
+    <h1>订单管理</h1>
+    <div class="row">
+        <div class="panel-body">
+            <!-- 过滤框 -->
+            <div class="panel panel-default">
+                <div class="panel-heading">查询条件</div>
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal">
+                        <div class="form-group" style="margin-top: 15px">
+                            @*<label class="control-label col-sm-1" for="txt-filter">任务名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="txt-filter">
+                                </div>*@
+                            @*<label class="control-label col-sm-1" for="txt-filter">日期</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="datepicker" placeholder="请选择日期" />
+                                    @*<span class="input-group-addon">到</span>
+                                    <input name="dtEnd" class="form-control" style="font-size: 13px;" type="text" value="">
+                                </div>*@
+                            <label for="dtp_input2" class="control-label col-sm-1" style="width:80px; float:left">日期</label>
+                            <div class="col-sm-4"  style="width:310px;">
+                                <input type="text" style="width:120px; float:left" class="form-control" value="2012-05-15" id="datetimepicker" data-date-format="yyyy-mm-dd">
+                                <label for="dtp_input2" style="width:40px; float:left" class="control-label col-sm-1">至</label>
+                                <input type="text" class="form-control" style="width:120px; float:left" value="2012-05-15" id="enddatetimepicker" data-date-format="yyyy-mm-dd">
+                            </div>
+                            
+                            <label class="control-label col-sm-1" for="txt-search-status">状态</label>
+                            <div class="col-sm-2" style="width:120px;">
+                                <select id="Status" class="form-control">
+                                    <option value="0">未派单</option>
+                                    <option value="-1">已撤销</option>
+                                    <option value="1">已派单</option>
+                                    <option value="2">已完成</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-sm-1" for="txt-search-status">订单类型</label>
+                            <div class="col-sm-2"  style="width:120px;">
+                                <select id="OrderType" class="form-control">
+                                    <option value="1">个人</option>
+                                    <option value="2">企业</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3" style="text-align: left;">
+                                <button type="button" style="" id="btn-query" class="btn btn-primary">查询</button>
+                                <input type="checkbox" style="margin-left: 30px" id="isRefresh"/>自动刷新
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table class="table" id="orderList">
+            @*<thead>
+                    <tr>
+                        <th>地址</th>
+                        <th>当前状态</th>
+                        <th>收货时间</th>
+                        <th>备注</th>
+                        <th>查看详情</th>
+                        <th>指派</th>
+                    </tr>
+                </thead>
+                <tbody id="orderListbody">
+                    @foreach (var user in ViewBag.Orders)
+                    {
+                        <tr>
+                            <td>@user.Address</td>
+                            <td>待派单
+                            </td>
+                            <td>@user.RecTime</td>
+                            <td>@user.Remark</td>
+                            <td><p data-toggle="modal" orderId="@user.Id" data-target="#OrderDetail" class="btn btn-info">订单详情</p></td>
+                            <td><span data-toggle="modal" orderId="@user.Id" data-target="#OrderAssign" class="btn btn-primary">订单指派</span></td>
+
+                        </tr>
+                    }
+                </tbody>*@
+        </table>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="OrderAssign" tabindex="-1" role="dialog" aria-labelledby="OrderAssign" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="userCreateForm" role="form" novalidate class="form-validation">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>指派取件人</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th>姓名</th>
+                                <th>手机号码</th>
+                                <th>地址</th>
+                                <th>选择</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Assign"></tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@L("Cancel")</button>
+                    @*<button type="button" class="btn btn-primary blue"><i class="fa fa-save"></i> <span>@L("Save")</span></button>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="OrderDetail" tabindex="-1" role="dialog" aria-labelledby="OrderDetail" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="userCreateForm" role="form" novalidate class="form-validation">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>订单详情</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>物品</th>
+                                <th>数量</th>
+                                <th>单位</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detail"></tbody>
+                    </table>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap-table/bootstrap-table.min.js"></script>
+    <link href="~/Content/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Views/PCOrder/Index.js?tt=9"></script>
+
+</div>

@@ -1,0 +1,117 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收回收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css?t=8">
+    <link rel="stylesheet" href="~/css/jquery-weui.css?t=8">
+    <link rel="stylesheet" href="~/css/common.css?t=8">
+    <style type="text/css">
+        body {
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body ontouchstart>
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_panel_hd">收货地址</div>
+        <div class="weui_panel_bd" id="tableList">
+            <div class="weui_media_box weui_media_text">
+                <h4 class="weui_media_title">张无忌 13528748451</h4>
+                <p class="weui_media_desc">成都市金牛区马鞍东路11号四川移动业务支撑中心</p>
+                <ul class="weui_media_info">
+                    <li class="weui_media_info_meta">设为默认</li>
+                    <li class="weui_media_info_meta weui_media_info_meta_extra">修改</li>
+                    <li class="weui_media_info_meta weui_media_info_meta_extra">删除</li>
+                </ul>
+            </div>
+            <div class="weui_media_box weui_media_text">
+                <h4 class="weui_media_title">张无忌 13528748451</h4>
+                <p class="weui_media_desc">成都市金牛区马鞍东路11号四川移动业务支撑中心</p>
+                <ul class="weui_media_info">
+                    <li class="weui_media_info_meta">设为默认</li>
+                    <li class="weui_media_info_meta weui_media_info_meta_extra">修改</li>
+                    <li class="weui_media_info_meta weui_media_info_meta_extra">删除</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="weui-popup-container">
+        <div class="weui-popup-overlay"></div>
+        <div class="weui-popup-modal">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cells_title">请填写以下信息</div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="txtName" class="weui_input" type="tel" placeholder="请输入姓名" maxlength="10">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">手机</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="txtPhone" class="weui_input" type="tel" placeholder="请输入手机号码" maxlength="11">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <textarea id="txtAddress" class="weui_textarea" placeholder="请输入详细收货地址" rows="3" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:;" id="btnSave" class="weui_btn weui_btn_primary">确认</a>
+            <a href="javascript:;" id="btnCancel" class="weui_btn weui_btn_disabled weui_btn_warn">取消</a>
+        </div>
+    </div>
+    <div id="btnAdd" class="navbar-fixed-bottom">
+        <a href="javascript:;" class="weui_btn weui_btn_primary">新建地址</a>
+    </div>
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script src="~/js/shoushou.js"></script>
+    <script src="~/Views/UserAddress/UserAddress.js?t=2"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+            window.address.Init();
+        });
+        
+        //$("#btnCancel").click(function () {
+        //    $.closePopup();
+        //    $("#btnAdd").show();
+        //});
+        //$("#btnAdd").click(function () {
+        //    $("#btnAdd").hide();
+        //    $("#content").popup();
+        //});
+        //$("#btnSave").click(function () {
+        //    var name = $("#txtName").val();
+        //    var phone = $("#txtPhone").val();
+        //    var address = $("#txtAddress").val();
+        //    if (!checkName(name)) {
+        //        $.toptip('姓名不能为空！', 'error');
+        //    }
+        //    else if (!checkPhone(phone)) {
+        //        $.toptip('手机号码错误！', 'error');
+        //    }
+        //    else if (!checkAddress(address)) {
+        //        $.toptip('地址不能为空！', 'error');
+        //    }
+        //    else {
+        //        $.showLoading("正在保存...");
+                
+        //    }
+        //});
+    </script>
+    <script src="~/js/jquery-weui.js"></script>
+</body>
+</html>

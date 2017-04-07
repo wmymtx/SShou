@@ -22,5 +22,13 @@ namespace SShou.EntityFramework.Repositories
                 }
             }
         }
+
+        public List<Entitys.OrderItems> QueryOrderItems(string orderId)
+        {
+            var query = GetAll();
+            return query.Where(d => d.F_OrderId == orderId).ToList();
+
+            
+        }
     }
 }

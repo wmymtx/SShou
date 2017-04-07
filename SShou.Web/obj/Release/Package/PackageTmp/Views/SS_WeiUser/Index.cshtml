@@ -1,0 +1,131 @@
+﻿
+@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收回收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+    <link rel="stylesheet" href="~/css/jquery-weui.css">
+    <link rel="stylesheet" href="~/css/common.css">
+    @Styles.Render("~/Bundles/cus_css")
+    <title>编辑个人信息</title>
+</head>
+<body ontouchstart>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="name" class="weui_input" type="text" placeholder="请输入姓名">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">从业废品回收多长时间</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell weui_cell_select">
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="time">
+                    <option value="1">一年以下</option>
+                    <option value="2">一至3年</option>
+                    <option value="3">三年以上</option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="phone" class="weui_input" type="number" placeholder="请输入手机">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label class="weui_label">微信号</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="weixin" class="weui_input" type="text" placeholder="请输入微信号">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd"><label for="" class="weui_label">身份证</label></div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="cardNo" class="weui_input" type="text" placeholder="请输入身份证">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">回收区域中心地址</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" id="address" type="text" value="四川省 成都市 全部">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" id="street" type="text" placeholder="详细街道地址">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">回收品类（至少选一项）</div>
+    <div class="weui_cells weui_cells_checkbox">
+        @foreach (var item in ViewBag.Category)
+        {
+            <label class="weui_cell weui_check_label" for="s1 @item.Id">
+                <div class="weui_cell_hd">
+                    <input type="checkbox" class="weui_check" valueName="@item.CategoryName" name="category" id="s1 @item.Id" value="@item.Id">
+                    <i class="weui_icon_checked"></i>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>@item.CategoryName</p>
+                </div>
+            </label>
+        }
+        @*<label class="weui_cell weui_check_label" for="s11">
+        <div class="weui_cell_hd">
+            <input type="checkbox" class="weui_check"  valueName="塑料" name="category" id="s11" value="1">
+            <i class="weui_icon_checked"></i>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>塑料</p>
+        </div>
+    </label>
+    <label class="weui_cell weui_check_label" for="s12">
+        <div class="weui_cell_hd">
+            <input type="checkbox" name="category" valueName="电子" class="weui_check" id="s12" value="2">
+            <i class="weui_icon_checked"></i>
+        </div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>电子</p>
+        </div>
+    </label>*@
+    </div>
+    <div id="submit" style="padding-top:30px">
+        <a href="javascript:;" class="weui_btn weui_btn_primary">确 定</a>
+    </div>
+    <script src="~/lib/jquery-2.1.4.js?t=1"></script>
+    <script src="~/lib/fastclick.js?t=1"></script>
+    <script src="~/js/jquery-weui.js?t=1"></script>
+    <script src="~/js/city-picker.js?t=1"></script>
+    <script src="~/js/shoushou.js?t=1"></script>
+   
+	<script src="~/Views/SS_WeiUser/Index.js"></script>
+    <script>
+        var openId = "@ViewBag.OpenId";
+        $(function () {
+            ssUser.init();
+        });
+    </script>
+  
+</body>
+</html>

@@ -11,5 +11,9 @@ namespace SShou.Web.Common
         public int Code { get; set; }
 
         public string Msg { get; set; }
+
+        public dynamic Result { get; set; }
+
+        public string RedirectUrl { get; set; }
     }
 }

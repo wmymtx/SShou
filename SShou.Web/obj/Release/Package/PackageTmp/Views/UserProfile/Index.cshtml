@@ -1,0 +1,158 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+
+    @Styles.Render("~/Bundles/cus_css")
+    <style type="text/css">
+        body {
+            padding-bottom: 50px;
+        }
+
+        .item_style {
+            list-style-type: none;
+        }
+    </style>
+
+</head>
+<body ontouchstart>
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_panel_hd">我的资料</div>
+        <div class="weui_panel_bd">
+            <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+                <div class="weui_media_hd">
+                    <div id="head_portrait">
+                        <img class="weui_media_appmsg_thumb" src="@ViewBag.HeadImgUrl" alt="">
+                    </div>
+                </div>
+                <div class="weui_media_bd">
+                    <h4 class="weui_media_title">@ViewBag.NickName</h4>
+                    <p class="weui_media_desc">@ViewBag.PhoneNo</p>
+                </div>
+            </a>
+        </div>
+        <div class="weui_panel_bd">
+            <div class="weui_cell">
+                <div class="weui_cell_hd weui_cell_primary">
+                    <ul class="item_style">
+                        <li>余额</li>
+                        <li class="item_value">0元</li>
+                    </ul>
+                </div>
+                <div class="weui_cell_hd weui_cell_primary line_style">
+                    <ul class="item_style">
+                        <li>积分</li>
+                        <li class="item_value"><span id="ponitScore">@ViewBag.PointScore</span>分</li>
+                    </ul>
+                </div>
+                <div class="weui_cell_hd weui_cell_primary">
+                    <ul class="item_style">
+                        <li>邀请码</li>
+                        <li class="item_value">@ViewBag.Invit_Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui_panel">
+        <div class="weui_panel_bd" id="alertUser">
+            <div class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a class="weui_cell" href="javascript:;">
+                        <div class="weui_cell_hd"><img src=""></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>修改资料</p>
+                        </div>
+                        <span class="weui_cell_ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_small_appmsg" id="points">
+                <div class="weui_cells weui_cells_access">
+                    <a class="weui_cell" href="javascript:;">
+                        <div class="weui_cell_hd"><img src=""></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>今日签到 <span id="pointSpan" style=" float:right;">已签到</span></p>
+                        </div>
+                        <span class="weui_cell_ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="weui_panel_bd">
+            <div id="userAddress" class="weui_media_box weui_media_small_appmsg">
+                <div class="weui_cells weui_cells_access">
+                    <a class="weui_cell" href="javascript:;">
+                        <div class="weui_cell_hd"><img src=""></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>地址管理</p>
+                        </div>
+                        <span class="weui_cell_ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @*<div class="weui_panel_bd" id="orders">
+                <div class="weui_media_box weui_media_small_appmsg">
+                    <div class="weui_cells weui_cells_access">
+                        <a class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_hd"><img src=""></div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <p>我的订单</p>
+                            </div>
+                            <span class="weui_cell_ft"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_panel_bd">
+                <div class="weui_media_box weui_media_small_appmsg">
+                    <div class="weui_cells weui_cells_access">
+                        <a class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_hd"><img src=""></div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <p>地址管理</p>
+                            </div>
+                            <span class="weui_cell_ft"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script src="~/Views/UserProfile/Index.js?t=3"></script>
+    <script src="~/js/jquery-weui.js"></script>
+    <script type="text/javascript">
+        //$orders = $("#orders");
+        //$(function () {
+        //    $orders.on('click', function () {
+        //        window.location.href = '/Order/OrderList';
+        //    });
+        //});
+        
+        $(function () {
+            PointsSign.PageInit();
+        });
+    </script>
+</body>
+</html>

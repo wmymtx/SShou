@@ -9,7 +9,7 @@ namespace SShou.IRepository
 {
     public interface IProductRepository : IRepository<Entitys.Product>
     {
-        IList<Entitys.Product> GetProduct();
+        IList<Entitys.Product> GetProduct(int type);
 
         IList<Entitys.Product> GetProductById(string ids);
 

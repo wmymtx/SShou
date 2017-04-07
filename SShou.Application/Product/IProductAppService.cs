@@ -13,7 +13,7 @@ namespace SShou.Product
         /// 获取产品列表
         /// </summary>
         /// <returns></returns>
-        IList<Dto.ProductListDto> GetProduct();
+        IList<Dto.ProductListDto> GetProduct(int type);
 
         /// <summary>
         /// 根据产品Id获取产品列表

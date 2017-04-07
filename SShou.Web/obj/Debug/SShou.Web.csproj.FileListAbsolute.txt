@@ -46,6 +46,9 @@ D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.Concurrent.dll
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.dll
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.Enlightenment.dll
 D:\myWork\SShou\SShou.Web\bin\Owin.dll
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.dll
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.MP.dll
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.MP.MvcExtension.dll
 D:\myWork\SShou\SShou.Web\bin\SShou.Application.dll
 D:\myWork\SShou\SShou.Web\bin\SShou.Core.dll
 D:\myWork\SShou\SShou.Web\bin\SShou.EntityFramework.dll
@@ -122,6 +125,11 @@ D:\myWork\SShou\SShou.Web\bin\Newtonsoft.Json.xml
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.xml
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.Concurrent.xml
 D:\myWork\SShou\SShou.Web\bin\Nito.AsyncEx.Enlightenment.xml
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.pdb
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.xml
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.MP.pdb
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.MP.xml
+D:\myWork\SShou\SShou.Web\bin\Senparc.Weixin.MP.MvcExtension.xml
 D:\myWork\SShou\SShou.Web\bin\System.Collections.Immutable.xml
 D:\myWork\SShou\SShou.Web\bin\System.Net.Http.Formatting.xml
 D:\myWork\SShou\SShou.Web\bin\System.Web.Helpers.xml
@@ -139,3 +147,7 @@ D:\myWork\SShou\SShou.Web\bin\zh\Hangfire.Core.resources.dll
 D:\myWork\SShou\SShou.Web\obj\Debug\SShou.Web.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\SShou.Web\obj\Debug\SShou.Web.dll
 D:\myWork\SShou\SShou.Web\obj\Debug\SShou.Web.pdb
+D:\myWork\SShou\SShou.Web\bin\SShou.Application.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.Core.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.EntityFramework.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.WebApi.dll.config

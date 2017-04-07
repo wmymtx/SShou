@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Abp, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -126,102 +128,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Repositories\OrderCommentRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderItemsRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\PointsLogRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\RegisterWeChatRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\SsCategoryRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\SsUserRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserAddressRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserDynamicInfoRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserLoginLogRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
     <Compile Include="EntityFramework\SShouDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\SShouRepositoryBase.cs" />
-    <Compile Include="Migrations\201506210746108_AbpZero_Initial.cs" />
-    <Compile Include="Migrations\201506210746108_AbpZero_Initial.Designer.cs">
-      <DependentUpon>201506210746108_AbpZero_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201701181317346_20170118.cs" />
+    <Compile Include="Migrations\201701181317346_20170118.Designer.cs">
+      <DependentUpon>201701181317346_20170118.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.cs" />
-    <Compile Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.Designer.cs">
-      <DependentUpon>201509081207232_UpdateModuleZeroTo_0_6_9.cs</DependentUpon>
+    <Compile Include="Migrations\201701251324520_20170125.cs" />
+    <Compile Include="Migrations\201701251324520_20170125.Designer.cs">
+      <DependentUpon>201701251324520_20170125.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.cs" />
-    <Compile Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.Designer.cs">
-      <DependentUpon>201509290947427_Upgrade_To_ModuleZero_0_7_1.cs</DependentUpon>
+    <Compile Include="Migrations\201702061328350_20170206.cs" />
+    <Compile Include="Migrations\201702061328350_20170206.Designer.cs">
+      <DependentUpon>201702061328350_20170206.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs" />
-    <Compile Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.Designer.cs">
-      <DependentUpon>201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs</DependentUpon>
+    <Compile Include="Migrations\201702221525551_20170222.cs" />
+    <Compile Include="Migrations\201702221525551_20170222.Designer.cs">
+      <DependentUpon>201702221525551_20170222.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.cs" />
-    <Compile Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.Designer.cs">
-      <DependentUpon>201511091457384_Upgrade_To_ModuleZero_0_7_4.cs</DependentUpon>
+    <Compile Include="Migrations\201702251416467_20170225.cs" />
+    <Compile Include="Migrations\201702251416467_20170225.Designer.cs">
+      <DependentUpon>201702251416467_20170225.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.cs" />
-    <Compile Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.Designer.cs">
-      <DependentUpon>201512241146128_Upgrade_To_Module_Zero_0_7_6.cs</DependentUpon>
+    <Compile Include="Migrations\201702251419167_201702252219.cs" />
+    <Compile Include="Migrations\201702251419167_201702252219.Designer.cs">
+      <DependentUpon>201702251419167_201702252219.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512241148372_Created_Indexes.cs" />
-    <Compile Include="Migrations\201512241148372_Created_Indexes.Designer.cs">
-      <DependentUpon>201512241148372_Created_Indexes.cs</DependentUpon>
+    <Compile Include="Migrations\201702251422210_201702252210.cs" />
+    <Compile Include="Migrations\201702251422210_201702252210.Designer.cs">
+      <DependentUpon>201702251422210_201702252210.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.cs" />
-    <Compile Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.Designer.cs">
-      <DependentUpon>201601032115057_Upgraded_Module_Zero_0_7_7.cs</DependentUpon>
+    <Compile Include="Migrations\201702260055412_20170226.cs" />
+    <Compile Include="Migrations\201702260055412_20170226.Designer.cs">
+      <DependentUpon>201702260055412_20170226.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs" />
-    <Compile Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.Designer.cs">
-      <DependentUpon>201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs</DependentUpon>
+    <Compile Include="Migrations\201703050055171_20170305.cs" />
+    <Compile Include="Migrations\201703050055171_20170305.Designer.cs">
+      <DependentUpon>201703050055171_20170305.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs" />
-    <Compile Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.Designer.cs">
-      <DependentUpon>201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs</DependentUpon>
+    <Compile Include="Migrations\201703111431439_201703.cs" />
+    <Compile Include="Migrations\201703111431439_201703.Designer.cs">
+      <DependentUpon>201703111431439_201703.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603220639423_Upgraded_To_Module_Zero_0_8_3.cs" />
-    <Compile Include="Migrations\201603220639423_Upgraded_To_Module_Zero_0_8_3.Designer.cs">
-      <DependentUpon>201603220639423_Upgraded_To_Module_Zero_0_8_3.cs</DependentUpon>
+    <Compile Include="Migrations\201703111433098_20170322.cs" />
+    <Compile Include="Migrations\201703111433098_20170322.Designer.cs">
+      <DependentUpon>201703111433098_20170322.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604271412090_Upgraded_To_V0_9.cs" />
-    <Compile Include="Migrations\201604271412090_Upgraded_To_V0_9.Designer.cs">
-      <DependentUpon>201604271412090_Upgraded_To_V0_9.cs</DependentUpon>
+    <Compile Include="Migrations\201703191347208_20170319.cs" />
+    <Compile Include="Migrations\201703191347208_20170319.Designer.cs">
+      <DependentUpon>201703191347208_20170319.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604281237494_Added_ConnectionString_To_Tenant.cs" />
-    <Compile Include="Migrations\201604281237494_Added_ConnectionString_To_Tenant.Designer.cs">
-      <DependentUpon>201604281237494_Added_ConnectionString_To_Tenant.cs</DependentUpon>
+    <Compile Include="Migrations\201703191352586_2017031921.cs" />
+    <Compile Include="Migrations\201703191352586_2017031921.Designer.cs">
+      <DependentUpon>201703191352586_2017031921.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605021116147_Created_Table_AbpUserAccounts.cs" />
-    <Compile Include="Migrations\201605021116147_Created_Table_AbpUserAccounts.Designer.cs">
-      <DependentUpon>201605021116147_Created_Table_AbpUserAccounts.cs</DependentUpon>
+    <Compile Include="Migrations\201703191419253_201703192219.cs" />
+    <Compile Include="Migrations\201703191419253_201703192219.Designer.cs">
+      <DependentUpon>201703191419253_201703192219.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605041151380_UserAccount_And_Notification_Changes.cs" />
-    <Compile Include="Migrations\201605041151380_UserAccount_And_Notification_Changes.Designer.cs">
-      <DependentUpon>201605041151380_UserAccount_And_Notification_Changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609110853544_Upgrade_To_ModuleZero_v1_12.cs" />
-    <Compile Include="Migrations\201609110853544_Upgrade_To_ModuleZero_v1_12.Designer.cs">
-      <DependentUpon>201609110853544_Upgrade_To_ModuleZero_v1_12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.cs" />
-    <Compile Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.Designer.cs">
-      <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612051741057_Upgrade_To_Abp_Zero_v1_1.cs" />
-    <Compile Include="Migrations\201612051741057_Upgrade_To_Abp_Zero_v1_1.Designer.cs">
-      <DependentUpon>201612051741057_Upgrade_To_Abp_Zero_v1_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612131450433_product.cs" />
-    <Compile Include="Migrations\201612131450433_product.Designer.cs">
-      <DependentUpon>201612131450433_product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612201356199_AddOrders.cs" />
-    <Compile Include="Migrations\201612201356199_AddOrders.Designer.cs">
-      <DependentUpon>201612201356199_AddOrders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612201420167_updateOrders.cs" />
-    <Compile Include="Migrations\201612201420167_updateOrders.Designer.cs">
-      <DependentUpon>201612201420167_updateOrders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612201447227_updateOrders1220.cs" />
-    <Compile Include="Migrations\201612201447227_updateOrders1220.Designer.cs">
-      <DependentUpon>201612201447227_updateOrders1220.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612211351266_or.cs" />
-    <Compile Include="Migrations\201612211351266_or.Designer.cs">
-      <DependentUpon>201612211351266_or.cs</DependentUpon>
+    <Compile Include="Migrations\201704011359099_20170401.cs" />
+    <Compile Include="Migrations\201704011359099_20170401.Designer.cs">
+      <DependentUpon>201704011359099_20170401.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -248,74 +227,50 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506210746108_AbpZero_Initial.resx">
-      <DependentUpon>201506210746108_AbpZero_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701181317346_20170118.resx">
+      <DependentUpon>201701181317346_20170118.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509081207232_UpdateModuleZeroTo_0_6_9.resx">
-      <DependentUpon>201509081207232_UpdateModuleZeroTo_0_6_9.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701251324520_20170125.resx">
+      <DependentUpon>201701251324520_20170125.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509290947427_Upgrade_To_ModuleZero_0_7_1.resx">
-      <DependentUpon>201509290947427_Upgrade_To_ModuleZero_0_7_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702061328350_20170206.resx">
+      <DependentUpon>201702061328350_20170206.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.resx">
-      <DependentUpon>201510141938232_Upgrade_Abp_And_Module_Zero_To_0_7_3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702221525551_20170222.resx">
+      <DependentUpon>201702221525551_20170222.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511091457384_Upgrade_To_ModuleZero_0_7_4.resx">
-      <DependentUpon>201511091457384_Upgrade_To_ModuleZero_0_7_4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702251416467_20170225.resx">
+      <DependentUpon>201702251416467_20170225.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512241146128_Upgrade_To_Module_Zero_0_7_6.resx">
-      <DependentUpon>201512241146128_Upgrade_To_Module_Zero_0_7_6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702251419167_201702252219.resx">
+      <DependentUpon>201702251419167_201702252219.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512241148372_Created_Indexes.resx">
-      <DependentUpon>201512241148372_Created_Indexes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702251422210_201702252210.resx">
+      <DependentUpon>201702251422210_201702252210.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601032115057_Upgraded_Module_Zero_0_7_7.resx">
-      <DependentUpon>201601032115057_Upgraded_Module_Zero_0_7_7.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702260055412_20170226.resx">
+      <DependentUpon>201702260055412_20170226.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.resx">
-      <DependentUpon>201602161446590_Upgrade_Abp_And_Module_Zero_To_0_8_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703050055171_20170305.resx">
+      <DependentUpon>201703050055171_20170305.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.resx">
-      <DependentUpon>201603021000202_Upgrade_Abp_And_Module_Zero_To_0_8_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703111431439_201703.resx">
+      <DependentUpon>201703111431439_201703.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603220639423_Upgraded_To_Module_Zero_0_8_3.resx">
-      <DependentUpon>201603220639423_Upgraded_To_Module_Zero_0_8_3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703111433098_20170322.resx">
+      <DependentUpon>201703111433098_20170322.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604271412090_Upgraded_To_V0_9.resx">
-      <DependentUpon>201604271412090_Upgraded_To_V0_9.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703191347208_20170319.resx">
+      <DependentUpon>201703191347208_20170319.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604281237494_Added_ConnectionString_To_Tenant.resx">
-      <DependentUpon>201604281237494_Added_ConnectionString_To_Tenant.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703191352586_2017031921.resx">
+      <DependentUpon>201703191352586_2017031921.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605021116147_Created_Table_AbpUserAccounts.resx">
-      <DependentUpon>201605021116147_Created_Table_AbpUserAccounts.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703191419253_201703192219.resx">
+      <DependentUpon>201703191419253_201703192219.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605041151380_UserAccount_And_Notification_Changes.resx">
-      <DependentUpon>201605041151380_UserAccount_And_Notification_Changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609110853544_Upgrade_To_ModuleZero_v1_12.resx">
-      <DependentUpon>201609110853544_Upgrade_To_ModuleZero_v1_12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609281412460_Upgrade_To_Abp_1_0.resx">
-      <DependentUpon>201609281412460_Upgrade_To_Abp_1_0.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612051741057_Upgrade_To_Abp_Zero_v1_1.resx">
-      <DependentUpon>201612051741057_Upgrade_To_Abp_Zero_v1_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612131450433_product.resx">
-      <DependentUpon>201612131450433_product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612201356199_AddOrders.resx">
-      <DependentUpon>201612201356199_AddOrders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612201420167_updateOrders.resx">
-      <DependentUpon>201612201420167_updateOrders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612201447227_updateOrders1220.resx">
-      <DependentUpon>201612201447227_updateOrders1220.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612211351266_or.resx">
-      <DependentUpon>201612211351266_or.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704011359099_20170401.resx">
+      <DependentUpon>201704011359099_20170401.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

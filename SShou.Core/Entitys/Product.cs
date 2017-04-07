@@ -13,9 +13,16 @@ namespace SShou.Entitys
     public class Product : Entity
     {
         [Column(TypeName = "nvarchar"), MaxLength(16)]
-        public string Prcd_Name { get; set; }
+        public virtual string Prcd_Name { get; set; }
 
         [Column(TypeName = "varchar"), MaxLength(50)]
-        public string Prcd_ImgPath { get; set; }
+        public virtual string Prcd_ImgPath { get; set; }
+
+        [Column(TypeName = "varchar"), MaxLength(10)]
+        public virtual string Unit { get; set; }
+
+        public virtual int Type { get; set; }
+
+        public virtual int Sort { get; set; }
     }
 }

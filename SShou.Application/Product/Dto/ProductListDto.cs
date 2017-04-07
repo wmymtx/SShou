@@ -15,5 +15,7 @@ namespace SShou.Product.Dto
         public string Prcd_Name { get; set; }
 
         public string Prcd_ImgPath { get; set; }
+
+        public string Unit { get; set; }
     }
 }

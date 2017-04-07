@@ -1,0 +1,255 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    SetAntiForgeryCookie();
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+    <link href="~/css/example.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Bundles/cus_css")
+    <style type="text/css">
+        body {
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body ontouchstart>
+    <div class="weui_panel weui_panel_access">
+
+        <div class="container" id="container">
+
+            <div class="page" id="orderList">
+                <div class="page__bd" style="height: 100%;">
+                    <div class="weui-tab">
+                        <div class="weui-navbar">
+                            <div class="weui_panel_bd">
+                                <div class="weui_media_box weui_media_small_appmsg">
+                                    <div class="weui_cells weui_cells_access">
+                                        <a class="weui_cell" href="javascript:;">
+                                            <i class="icon icon-prev" id="btn_back"></i>
+
+                                            <h2 class="weui_cell_bd weui_cell_primary" style="text-align:center">订单列表</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-tab__panel">
+                            <div class="page__bd page__bd_spacing">
+                                <ul id="orders"></ul>
+                            </div>
+                            <div class="page__hd" id="loadMore" style="text-align:center;">
+                                <p class="page__desc">加载更多....</p>
+                            </div>
+                            <div class="page__bd" id="loading" style="display:none;text-align:center;">
+                                <div class="weui-loadmore" id="loadings">
+                                    <i class="weui-loading"></i>
+                                    <span class="weui-loadmore__tips">正在加载</span>
+                                </div>
+                                <div class="weui-loadmore weui-loadmore_line" id="noMoreData" style="display:none">
+                                    <span class="weui-loadmore__tips">暂无数据</span>
+                                </div>
+                                <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+                                    <span class="weui-loadmore__tips"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="previewPage">
+                <div class="page__bd" style="height: 100%;">
+                    <div class="weui-tab">
+                        <div class="weui-navbar">
+                            <div class="weui_panel_bd">
+                                <div class="weui_media_box weui_media_small_appmsg">
+                                    <div class="weui_cells weui_cells_access">
+                                        <a class="weui_cell" href="javascript:;">
+                                            <i class="icon icon-prev" id="btn_prev"></i>
+
+                                            <h2 class="weui_cell_bd weui_cell_primary" style="text-align:center">订单详情</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-tab__panel">
+                            <div class="weui-form-preview">
+                                <div class="weui-form-preview__hd">
+
+                                </div>
+                                <div class="weui-form-preview__bd">
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">商品</label>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <table class="table">
+                                            <thead><tr><td>名称</td><td>数量</td></tr></thead>
+                                            <tbody id="orderItems"></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">订单状态：</label>
+                                        <span class="weui-form-preview__value" id="preview_order_status"></span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">收货人：</label>
+                                        <span class="weui-form-preview__value" id="preview_ssperson"></span>
+                                    </div>
+                                    <div class="weui-form-preview__item">
+                                        <label class="weui-form-preview__label">收货人电话:</label>
+                                        <span class="weui-form-preview__value" id="preview_ssphone"></span>
+                                    </div>
+                                </div>
+                                <div class="weui-form-preview__ft" id="btnCancel" style="display:none">
+                                    <a class="btn btn-primary" href="javascript:">撤单</a>
+                                </div>
+                            </div>
+                            <br>
+
+                        </div>
+                        <div class="page__ft">
+                            <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<script type="text/html" id="tpl_home">
+            <div class="page">
+                <div class="page__bd" style="height: 100%;">
+                    <div class="weui-tab">
+                        <div class="weui-navbar">
+                            <div class="weui_panel_bd">
+                                <div class="weui_media_box weui_media_small_appmsg">
+                                    <div class="weui_cells weui_cells_access">
+                                        <a class="weui_cell" href="javascript:;">
+                                            <i class="icon icon-prev"></i>
+
+                                            <h2 class="weui_cell_bd weui_cell_primary" style="text-align:center">订单列表</h2>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-tab__panel">
+                            <div class="page__bd page__bd_spacing">
+                                <ul id="orders"></ul>
+                            </div>
+                            <div class="page__hd" id="loadMore" style="text-align:center;">
+                                <p class="page__desc">加载更多....</p>
+                            </div>
+                            <div class="page__bd" id="loading" style="display:none;text-align:center;">
+                                <div class="weui-loadmore" id="loadings">
+                                    <i class="weui-loading"></i>
+                                    <span class="weui-loadmore__tips">正在加载</span>
+                                </div>
+                                <div class="weui-loadmore weui-loadmore_line" id="noMoreData" style="display:none">
+                                    <span class="weui-loadmore__tips">暂无数据</span>
+                                </div>
+                                <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+                                    <span class="weui-loadmore__tips"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="tpl_preview">
+            <div class="page">
+                <div class="page__hd">
+                    <h1 class="page__title">Preview</h1>
+                    <p class="page__desc">表单预览</p>
+                </div>
+                <div class="page__bd">
+                    <div class="weui-form-preview">
+                        <div class="weui-form-preview__hd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">付款金额</label>
+                                <em class="weui-form-preview__value">¥2400.00</em>
+                            </div>
+                        </div>
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">商品</label>
+                                <span class="weui-form-preview__value">电动打蛋机</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">标题标题</label>
+                                <span class="weui-form-preview__value">名字名字名字</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">标题标题</label>
+                                <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+                            </div>
+                        </div>
+                        <div class="weui-form-preview__ft">
+                            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="weui-form-preview">
+                        <div class="weui-form-preview__hd">
+                            <label class="weui-form-preview__label">付款金额</label>
+                            <em class="weui-form-preview__value">¥2400.00</em>
+                        </div>
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">商品</label>
+                                <span class="weui-form-preview__value">电动打蛋机</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">标题标题</label>
+                                <span class="weui-form-preview__value">名字名字名字</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">标题标题</label>
+                                <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+                            </div>
+                        </div>
+                        <div class="weui-form-preview__ft">
+                            <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">辅助操作</a>
+                            <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="page__ft">
+                    <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
+                </div>
+            </div>
+        </script>*@
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    @*//<script src="~/Scripts/pageManager.js?t=6"></script>*@
+    <script src="~/Views/Order/OrderList.js?t=s"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            setTimeout(function () {
+                FastClick.attach(document.body);
+                orderHelper.ExecParam.InitTapEvent();
+                orderHelper.ExecParam.getOrderInit();
+            }, 500);
+        })
+    </script>
+
+</body>
+
+</html>
