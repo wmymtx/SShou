@@ -12,6 +12,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.Twitter;
 using Owin;
+using Senparc.Weixin.MP.Containers;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -51,6 +52,8 @@ namespace SShou.Web
             }
 
             app.MapSignalR();
+
+            AccessTokenContainer.Register(Common.CommonConst.AppID,Common.CommonConst.AppSecret);
 
             //ENABLE TO USE HANGFIRE dashboard (Requires enabling Hangfire in SShouWebModule)
             //app.UseHangfireDashboard("/hangfire", new DashboardOptions

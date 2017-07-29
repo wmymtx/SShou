@@ -140,6 +140,7 @@
     <Compile Include="EntityFramework\Repositories\UserAddressRepository.cs" />
     <Compile Include="EntityFramework\Repositories\UserDynamicInfoRepository.cs" />
     <Compile Include="EntityFramework\Repositories\UserLoginLogRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserRecommendRepository.cs" />
     <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
     <Compile Include="EntityFramework\SShouDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\SShouRepositoryBase.cs" />
@@ -206,6 +207,14 @@
     <Compile Include="Migrations\201704071441145_20170407eve.cs" />
     <Compile Include="Migrations\201704071441145_20170407eve.Designer.cs">
       <DependentUpon>201704071441145_20170407eve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706270105468_20170627.cs" />
+    <Compile Include="Migrations\201706270105468_20170627.Designer.cs">
+      <DependentUpon>201706270105468_20170627.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706280021080_20170628.cs" />
+    <Compile Include="Migrations\201706280021080_20170628.Designer.cs">
+      <DependentUpon>201706280021080_20170628.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -279,6 +288,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704071441145_20170407eve.resx">
       <DependentUpon>201704071441145_20170407eve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706270105468_20170627.resx">
+      <DependentUpon>201706270105468_20170627.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706280021080_20170628.resx">
+      <DependentUpon>201706280021080_20170628.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,6 +49,9 @@ var TableInit = function () {
                 title: '地址'
                 
             }, {
+                    field: 'RecPhone',
+                    title: '号码'
+            }, {
                 field: 'Status',
                 title: '当前状态', formatter: function (value, row, index) {
                     return orderStatusDic[value];

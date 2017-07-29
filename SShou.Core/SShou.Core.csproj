@@ -106,6 +106,7 @@
     <Compile Include="Entitys\UserAddress.cs" />
     <Compile Include="Entitys\UserLoginLog.cs" />
     <Compile Include="Entitys\UserDynamicInfo.cs" />
+    <Compile Include="Entitys\UserRecommend.cs" />
     <Compile Include="Entitys\WeUser.cs" />
     <Compile Include="IRepository\IMapRangeRepository.cs" />
     <Compile Include="IRepository\IOrderCommentRepository.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="IRepository\IUserAddressRepository.cs" />
     <Compile Include="IRepository\IUserDynamicInfoRepository.cs" />
     <Compile Include="IRepository\IUserLoginLogRepository.cs" />
+    <Compile Include="IRepository\IUserRecommendRepository.cs" />
     <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="SShouConsts.cs" />
     <Compile Include="SShouCoreModule.cs" />

@@ -22,5 +22,13 @@ namespace SShou.Entitys
         /// </summary>
         public virtual int Score { get; set; }
 
+        /// <summary>
+        /// 积分来源类型
+        /// </summary>
+        public virtual int SourceType { get; set; }
+
+        [Column(TypeName = "varchar"), MaxLength(30)]
+        public virtual string FK_ID { get; set; }
+
     }
 }

@@ -49,6 +49,9 @@ var TableInit = function () {
                 title: '地址'
                 
             }, {
+                    field: 'RecPhone',
+                    title: '号码'
+            }, {
                 field: 'Status',
                 title: '当前状态', formatter: function (value, row, index) {
                     return orderStatusDic[value];
@@ -217,7 +220,7 @@ var TableInit = function () {
     $(function () {
 
 
-        $('<audio id="chatAudio"><source src="mp3/shoushou.mp3" type="audio/mpeg"><source src="notify.ogg" type="audio/ogg"><source src="notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>').appendTo('body');
+        $('<audio id="chatAudio"><source src="../mp3/shoushou.mp3" type="audio/mpeg"><source src="mp3/notify.ogg" type="audio/ogg"><source src="mp3/notify.mp3" type="audio/mpeg"><source src="mp3/notify.wav" type="audio/wav"></audio>').appendTo('body');
 
       //  _$form.validate();
 

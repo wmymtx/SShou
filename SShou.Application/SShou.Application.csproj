@@ -143,6 +143,9 @@
     <Compile Include="UserPoints\Dto\UserPointsOutputDto.cs" />
     <Compile Include="UserPoints\IUserPointAppService.cs" />
     <Compile Include="UserPoints\UserPointAppService.cs" />
+    <Compile Include="UserRecommend\Dto\UserRecommendInputDto.cs" />
+    <Compile Include="UserRecommend\IUserRecommendApplicationService.cs" />
+    <Compile Include="UserRecommend\UserRecommendApplicationService.cs" />
     <Compile Include="Users\Dto\CreateUserInput.cs" />
     <Compile Include="Users\Dto\UserLoginInputDto.cs" />
     <Compile Include="Users\Dto\UserLoginOutputDto.cs" />

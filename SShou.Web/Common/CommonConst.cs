@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SShou.Web.Common
 {
-   public class CommonConst
+    public class CommonConst
     {
         /// <summary>
         /// /认证地址
@@ -32,5 +32,11 @@ namespace SShou.Web.Common
         public static readonly string RedirectUrl = System.Configuration.ConfigurationManager.AppSettings["RedirectUrl"] ?? "http://wmymtx.eicp.net/WeLogin/Index";
 
         public static readonly string TemplateId = "waueKR4lYpI1lZqDhQCH4cnnure8Qv2pE9FT3tl2nTg";
+
+        public static readonly string Token = System.Configuration.ConfigurationManager.AppSettings["Token"] ?? "";
+
+        public static readonly string EncodingAESKey = System.Configuration.ConfigurationManager.AppSettings["EncodingAESKey"] ?? "";
+
+        public static readonly int InvitScore = int.Parse(System.Configuration.ConfigurationManager.AppSettings["InvitScore"] ?? "0");
     }
 }

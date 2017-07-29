@@ -78,3 +78,6 @@ D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\xunit.execution.desktop.xml
 D:\myWork\SShou\Tests\SShou.Tests\obj\Debug\SShou.Tests.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\Tests\SShou.Tests\obj\Debug\SShou.Tests.dll
 D:\myWork\SShou\Tests\SShou.Tests\obj\Debug\SShou.Tests.pdb
+D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.Application.dll.config
+D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.Core.dll.config
+D:\myWork\SShou\Tests\SShou.Tests\bin\Debug\SShou.EntityFramework.dll.config

@@ -1,0 +1,29 @@
+﻿@using System.Threading
+@using System.Web.Optimization
+@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>收收</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="人类回收资源,资源服务人类">
+	<style>
+	body{ margin:0; padding:0;}
+	img { height: auto; width: auto\9; width:100%; }
+	</style>
+</head>
+<body ontouchstart>
+    <img src="@ViewBag.openId">
+</body>
+<script type="text/javascript">
+    window.location = '/Poster/Share?path'+@ViewBag.img_path;
+</script>
+</html>

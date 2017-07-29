@@ -24,7 +24,7 @@
     <RestorePackages>true</RestorePackages>
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
-    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -207,7 +207,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
@@ -227,11 +226,9 @@
     </Reference>
     <Reference Include="Senparc.Weixin, Version=4.9.0.832, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Senparc.Weixin.4.9.0\lib\net45\Senparc.Weixin.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Senparc.Weixin.MP, Version=14.3.104.859, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Senparc.Weixin.MP.14.3.104\lib\net45\Senparc.Weixin.MP.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Senparc.Weixin.MP.MvcExtension, Version=4.1.1.114, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Senparc.Weixin.MP.MVC.4.1.2\lib\net45\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
@@ -497,6 +494,7 @@
     <Content Include="images\swiper-1.jpg" />
     <Content Include="images\swiper-2.jpg" />
     <Content Include="images\swiper-2.png" />
+    <Content Include="images\template\haibao.jpg" />
     <Content Include="images\vcode.jpg" />
     <Content Include="js\city-picker.js" />
     <Content Include="js\city-picker.min.js" />
@@ -617,6 +615,8 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Common\AuthorizationAttribute.cs" />
     <Compile Include="Common\CommonConst.cs" />
+    <Compile Include="Common\Cryptography.cs" />
+    <Compile Include="Common\CustomMessageHandler.cs" />
     <Compile Include="Common\DESEncrypt.cs" />
     <Compile Include="Common\DESEncryptEx.cs" />
     <Compile Include="Common\JsonResultStatus.cs" />
@@ -625,15 +625,19 @@
     <Compile Include="Common\ToJsonResult.cs" />
     <Compile Include="Common\UserHelper.cs" />
     <Compile Include="Common\WeiXinHelper.cs" />
+    <Compile Include="Common\WXBizMsgCrypt.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PCOrderController.cs" />
+    <Compile Include="Controllers\PosterController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RegisterWeChatController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
+    <Compile Include="Controllers\SShouReceiveController.cs" />
     <Compile Include="Controllers\SSUserController.cs" />
     <Compile Include="Controllers\SS_WeiUserController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
@@ -644,6 +648,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WeLoginController.cs" />
     <Compile Include="Helper\GuidToLong.cs" />
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Models\Layout\UserMenuOrLoginLinkViewModel.cs" />
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -705,6 +710,9 @@
     <Content Include="Views\UserAddress\Index.cshtml" />
     <Content Include="Views\UserAddress\Edit.cshtml" />
     <Content Include="Views\SS_WeiUser\Index.cshtml" />
+    <Content Include="Views\Poster\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Poster\Share.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -733,9 +741,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\bootstrap-table\locale\" />
+    <Folder Include="images\full\" />
+    <Folder Include="images\header\" />
     <Folder Include="images\layers\" />
+    <Folder Include="images\qrcode\" />
     <Folder Include="lib\fonts\" />
     <Folder Include="lib\images\" />
+    <Folder Include="Views\SShouReceive\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -757,8 +769,6 @@
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:8800/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost:8888/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -55,3 +55,5 @@ D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\System.Collections.Immutable.xml
 D:\myWork\SShou\Tools\SShou.Migrator\obj\Debug\SShou.Migrator.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\Tools\SShou.Migrator\obj\Debug\SShou.Migrator.exe
 D:\myWork\SShou\Tools\SShou.Migrator\obj\Debug\SShou.Migrator.pdb
+D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.Core.dll.config
+D:\myWork\SShou\Tools\SShou.Migrator\bin\Debug\SShou.EntityFramework.dll.config

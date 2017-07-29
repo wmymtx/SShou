@@ -43,6 +43,8 @@ namespace SShou.EntityFramework
 
         public IDbSet<Entitys.MapRange> MapRange { get; set; }
 
+        public IDbSet<Entitys.UserRecommend> UserRecommend { get; set; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

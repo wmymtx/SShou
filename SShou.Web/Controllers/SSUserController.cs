@@ -1,4 +1,6 @@
 ﻿using Abp.Web.Mvc.Controllers;
+using Senparc.Weixin.MP.AdvancedAPIs.TemplateMessage;
+using SShou.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,7 @@ namespace SShou.Web.Controllers
             return View();
         }
 
-        public JsonResult  GetOrderList(int limit, int offset, string departmentname, int status, string orderTime)
+        public JsonResult GetOrderList(int limit, int offset, string departmentname, int status, string orderTime)
         {
 
             var rst = new { rows = userAppService.GetUserByPage(offset, limit, status), total = userAppService.GetTotal(status) };
@@ -32,7 +34,7 @@ namespace SShou.Web.Controllers
 
         public JsonResult GetDetail(int userId)
         {
-            var item= userAppService.GetUserDetail(userId);
+            var item = userAppService.GetUserDetail(userId);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
@@ -42,15 +44,27 @@ namespace SShou.Web.Controllers
             json.Code = 200;
             if (userAppService.UpdateStatus(userId, status) > 0)
             {
-               var item= userAppService.GetUserDetail(userId);
+                var item = userAppService.GetUserDetail(userId);
                 if (item != null)
                 {
+                    OrderTemplateData orderData1 = new OrderTemplateData();
+                    orderData1.first = new TemplateDataItem("尊敬的回收用户，你好！你提交的申请已受理");
+                    orderData1.keyword1 = new TemplateDataItem(item.JoinTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    orderData1.keyword2 = new TemplateDataItem("加入收收");
+                   
+
                     if (status == 1)
-                        Common.WeiXinHelper.SendSimpleMsg(Common.CommonConst.AppID, item.OpenId, "您登记加入收收的信息已审核通过");
+                    {
+                        orderData1.keyword3 = new TemplateDataItem("审核已通过");
+                    }
+
                     else
                     {
-                        Common.WeiXinHelper.SendSimpleMsg(Common.CommonConst.AppID, item.OpenId, "您登记加入收收的信息未通过审核，请到重新登记加盟信息");
+                        orderData1.keyword3 = new TemplateDataItem("审核未通过");
+                        //Common.WeiXinHelper.SendSimpleMsg(Common.CommonConst.AppID, item.OpenId, "您登记加入收收的信息未通过审核，请到重新登记加盟信息");
                     }
+                    orderData1.remark = new TemplateDataItem("感谢你对收收的支持！");
+                    Common.WeiXinHelper.SendTemplateToSSWeUser(Common.CommonConst.AppID, item.OpenId, orderData1);
                 }
                 json.Msg = "操作成功";
             }

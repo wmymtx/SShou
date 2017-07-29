@@ -14,5 +14,7 @@ namespace SShou.IRepository
         List<Entitys.PointsLog> GetPointsLog(int userId);
 
         int IsSign(int userId);
+
+        void InvitAddPoints(Entitys.PointsLog entity);
     }
 }

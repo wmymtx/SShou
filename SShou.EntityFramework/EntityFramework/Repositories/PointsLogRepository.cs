@@ -37,5 +37,16 @@ namespace SShou.EntityFramework.Repositories
             var rstList = query.Where(o => o.UserId == userId && o.AddTime == date).ToList();
             return rstList == null ? 0 : rstList.Count;
         }
+
+        public void InvitAddPoints(Entitys.PointsLog entity)
+        {
+            entity.AddTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            var query = GetAll();
+            var rst = query.Where(o => o.FK_ID == entity.FK_ID).FirstOrDefault();
+            if (rst == null)
+            {
+                InsertAndGetId(entity);
+            }
+        }
     }
 }

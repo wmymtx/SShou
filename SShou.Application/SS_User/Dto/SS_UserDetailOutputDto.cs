@@ -54,5 +54,7 @@ namespace SShou.SS_User.Dto
         public  string RecyclingCategoryName { get; set; }
 
         public  string ID_Card { get; set; }
+
+        public  DateTime JoinTime { get; set; }
     }
 }

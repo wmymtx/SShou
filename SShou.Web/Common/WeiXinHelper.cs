@@ -23,6 +23,12 @@ namespace SShou.Web.Common
             SendTemplateMessageResult sendResult = TemplateApi.SendTemplateMessage(access_token, openId, "cogrr5tjx2GK_FGqFj1ty5A0Q1I80iIjyTOpkQlU-Qk", linkUrl, templateData);
         }
 
+        public static void SendTemplateToSSWeUser(string access_token, string openId,  OrderTemplateData templateData)
+        {
+            var linkUrl = string.Format("http://weixin.shoushouto.com/about.html");
+            SendTemplateMessageResult sendResult = TemplateApi.SendTemplateMessage(access_token, openId, "74XYb4pyEyruCGWAqQch2qhTcQjfIRyxjixU6-3cbUA", linkUrl, templateData);
+        }
+
         public static void SendSimpleMsg(string access_token, string openId, string msg)
         {
             Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(access_token, openId, msg);
