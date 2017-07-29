@@ -30,6 +30,10 @@ namespace SShou.Orders
 
         Dto.OrderOuputDto CancelOrder(string id);
 
+        Dto.OrderOuputDto CanOrder(string id);
+
         Dto.OrderOuputDto OrderAssign(Dto.UserAssignInputDto input);
+
+        Dto.MapRangeOutput getMapRange();
     }
 }

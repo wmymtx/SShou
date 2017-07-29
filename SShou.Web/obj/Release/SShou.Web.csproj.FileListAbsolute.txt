@@ -147,3 +147,7 @@ D:\myWork\SShou\SShou.Web\bin\zh\Hangfire.Core.resources.dll
 D:\myWork\SShou\SShou.Web\obj\Release\SShou.Web.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\SShou.Web\obj\Release\SShou.Web.dll
 D:\myWork\SShou\SShou.Web\obj\Release\SShou.Web.pdb
+D:\myWork\SShou\SShou.Web\bin\SShou.Application.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.Core.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.EntityFramework.dll.config
+D:\myWork\SShou\SShou.Web\bin\SShou.WebApi.dll.config

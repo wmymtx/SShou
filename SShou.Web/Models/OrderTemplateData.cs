@@ -9,14 +9,14 @@ namespace SShou.Web.Models
 {
     public class OrderTemplateData
     {
-        public TemplateDataItem first { get; set; }
+            public TemplateDataItem first { get; set; }
 
-        public TemplateDataItem keyword1 { get; set; }
+            public TemplateDataItem keyword1 { get; set; }
 
-        public TemplateDataItem keyword2 { get; set; }
+            public TemplateDataItem keyword2 { get; set; }
 
-        public TemplateDataItem keyword3 { get; set; }
+            public TemplateDataItem keyword3 { get; set; }
 
-        public TemplateDataItem remark { get; set; }
+            public TemplateDataItem remark { get; set; }
     }
 }

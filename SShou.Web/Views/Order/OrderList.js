@@ -4,7 +4,8 @@
     var SearchParams = { PageIndex: 0, PageSize: 5 };
     var $orders = $("#orders"), $loadMore = $("#loadMore"), $loading = $("#loading"), $loadings = $("#loadings"), $noMoreData = $("#noMoreData"), $previewPage = $("#previewPage"), $orderList = $("#orderList"),
         $btn_prev = $("#btn_prev"), $btn_back = $("#btn_back"), $orderItems = $("#orderItems"),
-        $preview_order_status = $("#preview_order_status"), $preview_ssperson = $("#preview_ssperson"), $preview_ssphone = $("#preview_ssphone"), $btnCancel = $("#btnCancel"),$person=$("#person"),$phone=$("#phone");
+        $preview_order_status = $("#preview_order_status"), $preview_ssperson = $("#preview_ssperson"), $preview_ssphone = $("#preview_ssphone"), $btnCancel = $("#btnCancel"), $person = $("#person"), $phone = $("#phone");
+    var $btnSure = $("#btnSure"), $addr = $("#addr");
     var orderStatusDic = {
         0: "待指派", 1: "已指派", 2: "已完成", "-1": "已撤销", 3: "已评分"
     };
@@ -56,6 +57,7 @@
             });
         },
         cancelOrder: function (id) {
+            $.confirm('订单取消提示', "是否要取消该订单", function () {
             $.ajax({
                 type: 'GET', url: '/Order/CancelOrder', contentType: "application/json; charset=utf-8",
                 data: { id: id }, dataType: "json",
@@ -72,7 +74,29 @@
                 error: function (msg) {
                     //alert(msg);
                 }
-            });
+                });
+            }, function () { });
+        },
+        canOrder: function (id) {
+           
+                $.ajax({
+                    type: 'GET', url: '/Order/CanOrder', contentType: "application/json; charset=utf-8",
+                    data: { id: id }, dataType: "json",
+                    beforeSend: function (xhr) {
+                        console.log(xhr);
+                        console.log('发送前');
+                    },
+                    success: function (data) {
+                        //innerFunc.HideLoadMore(data);
+                        var json = JSON.stringify(data);
+                        $.toast("操作成功！");
+                        $btnCancel.hide();
+                    },
+                    error: function (msg) {
+                        //alert(msg);
+                    }
+                });
+          
         },
         _getDetailData: function (id) {
             $.ajax({
@@ -100,14 +124,23 @@
                                 $btnCancel.on('click', function () {
                                     order.cancelOrder(orderData.id);
                                 });
-                            } else {
+                            } else if (orderData.status == 1) {
+                                $btnSure.show();
+                                $btnSure.on('click', function () {
+                                    order.canOrder(orderData.id);
+                                });
+                            }
+                            else
+                            {
                                 $btnCancel.hide();
+                                $btnSure.hide();
                             }
                             $person.html(orderData.recUserName);
                             $phone.html(orderData.recPhone);
                             $preview_order_status.html(orderStatusDic[orderData.status]);
                             $preview_ssperson.html(orderData.personName);
                             $preview_ssphone.html(orderData.phoneNo);
+                            $addr.html(orderData.address);
                         }
 
                     }

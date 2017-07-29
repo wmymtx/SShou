@@ -28,6 +28,10 @@ namespace SShou.Orders.Dto
 
         public int OrderType { get; set; }
 
+        public double Lng { get; set; }
+
+        public double Lat { get; set; }
+
         //[Column(TypeName = "varchar"), MaxLength(20)]
         //public virtual string ProsonId { get; set; }
 

@@ -20,6 +20,10 @@ namespace SShou.Orders.Dto
 
         public int OrderType { get; set; }
 
+        public double Lng { get; set; }
+
+        public double Lat { get; set; }
+
         public List<Items> Order { get; set; }
     }
 

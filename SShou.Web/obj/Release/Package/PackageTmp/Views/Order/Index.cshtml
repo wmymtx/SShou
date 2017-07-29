@@ -257,40 +257,48 @@
                     error.push("请输入收货地址！");
                 }
                 if (error.length == 0) {
-                    var json = '{"Order":[' + array.toString() + '],"Address":"' + address + '","Remark":"' + remark + '","Time":"' + time + '","orderType":"'+orderType+'","RecPhone":"'+recPhone+'","RecUserName":"'+recUserName+'"}';
-                    $.ajax({
-                        url: '../Order/CreateOrder', type: 'POST',
-                        dataType: 'json',
-                        data: JSON.parse(json),
-                        beforeSend: function (xhr) {
-                            console.log(xhr);
-                            console.log('发送前');
-                            $.showLoading("正在处理...");
-                        },
-                        success: function (data, textStatus, jqXHR) {
-                            console.log(data)
-                            console.log(textStatus)
-                            console.log(jqXHR);
-                            if (data.result.code == 200)
-                            {
-                                var url = "../Info/Index";
-                                window.location.href = url;
-                                $.showLoading();
-                            }else
-                            {
-                                error.push(data.Msg);
+
+                    getLocation.AddressToPoint(address, function (datas) {
+                        //datas包含经纬度信息和城市
+                        addressInfo = datas;
+
+                        var lat = addressInfo.result.location;
+                        var json = '{"Order":[' + array.toString() + '],"Address":"' + address + '","Remark":"' + remark + '","Time":"' + time + '","orderType":"' + orderType + '","RecPhone":"' + recPhone + '","RecUserName":"' + recUserName + '","Lat":"' + lat.lat + '","Lng":"' + lat.lng + '"}';
+                        $.ajax({
+                            url: '../Order/CreateOrder', type: 'POST',
+                            dataType: 'json',
+                            data: JSON.parse(json),
+                            beforeSend: function (xhr) {
+                                console.log(xhr);
+                                console.log('发送前');
+                                $.showLoading("正在处理...");
+                            },
+                            success: function (data, textStatus, jqXHR) {
+                                console.log(data)
+                                console.log(textStatus)
+                                console.log(jqXHR);
+                                if (data.result.code == 200) {
+                                    var url = "../Info/Index";
+                                    window.location.href = url;
+                                    $.showLoading();
+                                } else {
+                                    error.push(data.Msg);
+                                    $.toptip(data.result.msg, 'warning');
+                                }
+                            },
+                            error: function (xhr, textStatus) {
+                                console.log('错误')
+                                console.log(xhr)
+                                console.log(textStatus)
+                            },
+                            complete: function () {
+                                console.log('结束');
+                                $.hideLoading();
                             }
-                        },
-                        error: function (xhr, textStatus) {
-                            console.log('错误')
-                            console.log(xhr)
-                            console.log(textStatus)
-                        },
-                        complete: function () {
-                            console.log('结束');
-                            $.hideLoading();
-                        }
+                        });
                     });
+
+                    
                 }
                 else {
                     $.toptip(error[0], 'warning');
@@ -464,6 +472,7 @@
         {
             alert(msg);
         }
+        var addressInfo = {};
         function InitAddress()
         {
             var param={AppId:@ViewBag.AppId,timestamp:@ViewBag.timestamp,nonceStr:@ViewBag.nonceStr,signature:@ViewBag.signature};
@@ -472,6 +481,8 @@
                 //data包含经纬度信息
                 getLocation.cityname(data.latitude, data.longitude, function (datas) {
                     //datas包含经纬度信息和城市
+                    $("#address").val(datas.address);
+                    addressInfo = datas;
                 });
             },function(er){});
             if(addr==""||$.trim(addr).length<=0)

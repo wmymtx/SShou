@@ -106,6 +106,7 @@
     <Compile Include="OrderComment\Dto\OrderCommentOutput.cs" />
     <Compile Include="OrderComment\IOrderCommentAppService.cs" />
     <Compile Include="OrderComment\OrderCommentAppService.cs" />
+    <Compile Include="Orders\Dto\MapRangeOutput.cs" />
     <Compile Include="Orders\Dto\OrderInputDto.cs" />
     <Compile Include="Orders\Dto\OrderInputDtos.cs" />
     <Compile Include="Orders\Dto\OrderItemsInputDto.cs" />

@@ -21,6 +21,8 @@ namespace SShou.IRepository
 
         Entitys.Orders CancelOrder(string id);
 
+        Entitys.Orders CanOrder(string id);
+
         Entitys.Orders OrderAssign(Entitys.Orders order);
 
         List<Entitys.Orders> QueryOrderByStatus(int status, int pageIndex, int pageSize, string orderDate,int OrderType, string endTime);

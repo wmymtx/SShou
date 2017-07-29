@@ -22,5 +22,10 @@ namespace SShou.Web.Common
             var linkUrl = string.Format("http://weixin.shoushouto.com/Order/Detail?orderId={0}", orderId);
             SendTemplateMessageResult sendResult = TemplateApi.SendTemplateMessage(access_token, openId, "cogrr5tjx2GK_FGqFj1ty5A0Q1I80iIjyTOpkQlU-Qk", linkUrl, templateData);
         }
+
+        public static void SendSimpleMsg(string access_token, string openId, string msg)
+        {
+            Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(access_token, openId, msg);
+        }
     }
 }

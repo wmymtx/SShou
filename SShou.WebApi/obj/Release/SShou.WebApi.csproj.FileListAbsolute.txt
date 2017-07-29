@@ -62,3 +62,5 @@ D:\myWork\SShou\SShou.WebApi\bin\Release\System.Web.Http.WebHost.xml
 D:\myWork\SShou\SShou.WebApi\obj\Release\SShou.WebApi.csprojResolveAssemblyReference.cache
 D:\myWork\SShou\SShou.WebApi\obj\Release\SShou.WebApi.dll
 D:\myWork\SShou\SShou.WebApi\obj\Release\SShou.WebApi.pdb
+D:\myWork\SShou\SShou.WebApi\bin\Release\SShou.Application.dll.config
+D:\myWork\SShou\SShou.WebApi\bin\Release\SShou.Core.dll.config

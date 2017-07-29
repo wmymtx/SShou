@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\MapRange.cs" />
     <Compile Include="Entitys\OrderComment.cs" />
     <Compile Include="Entitys\OrderItems.cs" />
     <Compile Include="Entitys\Orders.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Entitys\UserLoginLog.cs" />
     <Compile Include="Entitys\UserDynamicInfo.cs" />
     <Compile Include="Entitys\WeUser.cs" />
+    <Compile Include="IRepository\IMapRangeRepository.cs" />
     <Compile Include="IRepository\IOrderCommentRepository.cs" />
     <Compile Include="IRepository\IOrderItemsRepository.cs" />
     <Compile Include="IRepository\IOrderRepository.cs" />

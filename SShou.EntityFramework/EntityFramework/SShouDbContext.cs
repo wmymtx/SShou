@@ -41,6 +41,8 @@ namespace SShou.EntityFramework
 
         public IDbSet<Entitys.AbpUser> AbpUser { get; set; }
 
+        public IDbSet<Entitys.MapRange> MapRange { get; set; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

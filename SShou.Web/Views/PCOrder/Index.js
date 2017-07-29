@@ -74,7 +74,11 @@ var TableInit = function () {
                     else
                         return '';
                 }
-            }], onLoadSuccess: function () {
+            }], onLoadSuccess: function (data) {
+                if (data.rows.length >= 1 && data.rows[0].Status==0)
+                {
+                    $('#chatAudio')[0].play();
+                }
                 $OrderAssign.on('shown.bs.modal', function () {
                     $OrderAssign.find('input:not([type=hidden]):first').focus();
                 });
@@ -197,7 +201,7 @@ var TableInit = function () {
     oTableInit.queryParams = function (params) {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
-            offset: params.offset,  //页码
+            offset: params.offset/10,  //页码
             departmentname: "",
             status: $("#Status").val(),
             orderTime: $("#datetimepicker").val(),
@@ -213,7 +217,7 @@ var TableInit = function () {
     $(function () {
 
 
-      
+        $('<audio id="chatAudio"><source src="../mp3/shoushou.mp3" type="audio/mpeg"><source src="mp3/notify.ogg" type="audio/ogg"><source src="mp3/notify.mp3" type="audio/mpeg"><source src="mp3/notify.wav" type="audio/wav"></audio>').appendTo('body');
 
       //  _$form.validate();
 

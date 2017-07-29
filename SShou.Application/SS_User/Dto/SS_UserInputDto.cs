@@ -57,5 +57,7 @@ namespace SShou.SS_User.Dto
         public virtual string RecyclingCategoryId { get; set; }
 
         public virtual string RecyclingCategoryName { get; set; }
+
+        public virtual string ID_Card { get; set; }
     }
 }

@@ -42,6 +42,18 @@ namespace SShou.EntityFramework.Repositories
             }
             else
             {
+                if (item.Status != 1)
+                {
+                    item.Status = 0;
+                    item.RecyclingCategoryId = user.RecyclingCategoryId;
+                    item.RecyclingCategoryName = user.RecyclingCategoryName;
+                    item.Province = user.Province;
+                    item.PhoneNo = user.PhoneNo;
+                    item.ID_Card = user.ID_Card;
+                    item.WorkingTime = user.WorkingTime;
+                    Update(item);
+                    return 1;
+                }
                 return 0;
             }
         }

@@ -25,6 +25,8 @@ namespace SShou.Web.Controllers
         public string nonceStr = string.Empty;
         public string signature = string.Empty;
 
+        private readonly PointIntersect pointIntersect = new PointIntersect();
+
         // GET: Order
 
         public OrderController(Product.IProductAppService _IProdAppService, Orders.IOrderAppService _iOrderRepositorys, UserAddress.IUserAddressAppService userAddressService, OrderComment.IOrderCommentAppService commentAppService)
@@ -83,6 +85,17 @@ namespace SShou.Web.Controllers
             string address = json.Address;
             string remark = json.Remark;
             string time = json.Time;
+
+            JsonResultStatus rstJson = new JsonResultStatus();
+            var lng_lat = _orderRepository.getMapRange();
+            if (lng_lat.Lat!=null&& lng_lat.Lat.Count>=1&& !pointIntersect.IsPointInPolygon(json.Lat, json.Lng, lng_lat.Lat, lng_lat.Lng))
+            {
+                rstJson.Code = 401;
+                rstJson.Msg = "该区域未开通";
+
+                return Json(rstJson);
+            }
+
             //Logger.Debug("当前用户Cookie" + Common.UserHelper.Instance.getCookie());
             Logger.Debug("当前用户Id" + Common.UserHelper.Instance.getUserId().ToString());
             List<Orders.Dto.OrderItemsInputDto> items = new List<Orders.Dto.OrderItemsInputDto>();
@@ -105,7 +118,7 @@ namespace SShou.Web.Controllers
             orders.OrderType = json.OrderType;
             orders.RecPhone = json.RecPhone;
             orders.RecUserName = json.RecUserName;
-            JsonResultStatus rstJson = new JsonResultStatus();
+          
             if (_orderRepository.CreateOrder(orders, items))
             {
                 var addressItem = _userAddressService.GetDefault(Common.UserHelper.Instance.getUserId());
@@ -194,6 +207,15 @@ namespace SShou.Web.Controllers
         public JsonResult CancelOrder(string id)
         {
             var outResult = this._orderRepository.CancelOrder(id);
+            //return Json(outResult, JsonRequestBehavior.AllowGet);
+
+            var rst = new Common.JsonResultStatus() { Code = 200, Msg = "获取成功", Result = outResult };
+            return Json(rst, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CanOrder(string id)
+        {
+            var outResult = this._orderRepository.CanOrder(id);
             //return Json(outResult, JsonRequestBehavior.AllowGet);
 
             var rst = new Common.JsonResultStatus() { Code = 200, Msg = "获取成功", Result = outResult };

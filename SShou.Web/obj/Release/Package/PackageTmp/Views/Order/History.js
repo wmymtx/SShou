@@ -2,6 +2,7 @@
     'use strict';
     var $list = $("#list"), $btnOk = $("#btnOk"), $btnCancel = $("#btnCancel"), $about = $("#about"), score, orderId, orderStatus = 0;
     var SearchParams = { PageIndex: 0, PageSize: 5 };
+    var $content = $("#content");
     var orderStatusDic = {
         0: "待指派", 1: "已指派", 2: "已完成", "-1": "已撤销", 3: "已评分"
     };
@@ -21,9 +22,10 @@
                     var id = $(this).attr("id");
                     orderStatus = $(this).attr("orderStatus");
                     orderId = id;
-                    if (orderStatus == 2) {
+                    if (orderStatus === 2) {
+                        $content.val('');
                         $about.popup();
-                    } else if (orderStatus == 3) {
+                    } else if (orderStatus === 3) {
                         $.toast("不能重复评分", "forbidden");
                     }
                     else {
@@ -61,13 +63,19 @@
                 }
             });
         }, OrderComment: function (orderId) {
+            var content = $content.val();
+            if (content.length <= 0)
+            {
+                $.toast("请输入评价", "forbidden");
+                return;
+            }
             if (historyPage.score <= 0) {
                 $.toast("请选择评分分数", "forbidden");
                 return;
             }
             $.ajax({
                 type: 'Post', url: '/Order/OrderComment', contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({ F_OrderId: orderId, Score: historyPage.score }), dataType: "json",
+                data: JSON.stringify({ F_OrderId: orderId, Score: historyPage.score, Comment: content }), dataType: "json",
                 beforeSend: function (xhr) {
                     console.log(xhr);
                     console.log('发送前');
@@ -109,7 +117,7 @@
                     console.log(xhr);
                 }, success: function (data) {
                     if (data) {
-                        if (data.Code == 200) {
+                        if (data.Code === 200) {
                             alert(data.msg);
                             $.closePopup();
                         }

@@ -13,11 +13,14 @@ namespace SShou.Orders
     {
         private readonly IRepository.IOrderRepository _orderRepository;
         private readonly IRepository.IOrderItemsRepository _orderItemsRepository;
+        private readonly IRepository.IMapRangeRepository _mapRangeRspository;
 
-        public OrderAppService(IRepository.IOrderRepository iOrderRepository, IRepository.IOrderItemsRepository iOrderItemRepository)
+        public OrderAppService(IRepository.IOrderRepository iOrderRepository, IRepository.IOrderItemsRepository iOrderItemRepository,
+            IRepository.IMapRangeRepository mapRangeRepository)
         {
             this._orderItemsRepository = iOrderItemRepository;
             this._orderRepository = iOrderRepository;
+            this._mapRangeRspository = mapRangeRepository;
         }
 
         [UnitOfWork]
@@ -70,6 +73,11 @@ namespace SShou.Orders
             return _orderRepository.CancelOrder(id).MapTo<Dto.OrderOuputDto>();
         }
 
+        public Dto.OrderOuputDto CanOrder(string id)
+        {
+            return _orderRepository.CanOrder(id).MapTo<Dto.OrderOuputDto>();
+        }
+
         public Dto.OrderOuputDto OrderAssign(Dto.UserAssignInputDto input)
         {
             var orderInfo = _orderRepository.QueryByOrderId(input.Id);
@@ -78,6 +86,32 @@ namespace SShou.Orders
             orderInfo.PhoneNo = input.PhoneNo;
             orderInfo.Status = 1;
             return _orderRepository.OrderAssign(orderInfo).MapTo<Dto.OrderOuputDto>();
+        }
+
+        public Dto.MapRangeOutput getMapRange()
+        {
+            var rst = _mapRangeRspository.getAllRange();
+            MapRangeOutput output = new MapRangeOutput();
+            if (rst != null)
+            {
+                
+                List<double> lng = new List<double>();
+                List<double> lat = new List<double>();
+                foreach (var item in rst)
+                {
+                    var subRst = item.Lat_Lng.Split('|');
+                    foreach (var subItem in subRst)
+                    {
+                        var lng_lat = subItem.Split(',');
+                        lng.Add(double.Parse(lng_lat[0]));
+                        lat.Add(double.Parse(lng_lat[1]));
+                    }
+                }
+
+                output.Lat = lat;
+                output.Lng = lng;
+            }
+            return output;
         }
     }
 }

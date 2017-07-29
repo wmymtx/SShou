@@ -19,7 +19,7 @@ namespace SShou.Web.Controllers
         // GET: SSUser
         public ActionResult Index()
         {
-            ViewBag.User = userAppService.GetAllUser();
+            //ViewBag.User = userAppService.GetAllUser();
             return View();
         }
 
@@ -42,6 +42,16 @@ namespace SShou.Web.Controllers
             json.Code = 200;
             if (userAppService.UpdateStatus(userId, status) > 0)
             {
+               var item= userAppService.GetUserDetail(userId);
+                if (item != null)
+                {
+                    if (status == 1)
+                        Common.WeiXinHelper.SendSimpleMsg(Common.CommonConst.AppID, item.OpenId, "您登记加入收收的信息已审核通过");
+                    else
+                    {
+                        Common.WeiXinHelper.SendSimpleMsg(Common.CommonConst.AppID, item.OpenId, "您登记加入收收的信息未通过审核，请到重新登记加盟信息");
+                    }
+                }
                 json.Msg = "操作成功";
             }
             else

@@ -64,3 +64,4 @@ D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations._2017031921.res
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations._201703192219.resources
 D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations._20170401.resources
 D:\myWork\SShou\SShou.EntityFramework\bin\Debug\SShou.Core.dll.config
+D:\myWork\SShou\SShou.EntityFramework\obj\Debug\SShou.Migrations._20170407eve.resources

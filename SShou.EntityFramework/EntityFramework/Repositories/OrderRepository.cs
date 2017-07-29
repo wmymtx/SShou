@@ -67,6 +67,17 @@ namespace SShou.EntityFramework.Repositories
             return null;
         }
 
+        public Entitys.Orders CanOrder(string id)
+        {
+            var order = Get(id);
+            if (order != null)
+            {
+                order.Status = 2;
+                return Update(order);
+            }
+            return null;
+        }
+
         public Entitys.Orders OrderAssign(Entitys.Orders order)
         {
             return Update(order);

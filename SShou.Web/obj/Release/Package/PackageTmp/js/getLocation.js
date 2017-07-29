@@ -81,10 +81,25 @@
             }
         });
     },
+    AddressToPoint: function (address, callback)
+    {
+        $.ajax({
+            url: 'http://api.map.baidu.com/geocoder/v2/?callback=renderOption&output=json&address=' + address + '&city=成都市&ak=9lQZq4gCDUYjEh0EhPT6qKt5GEvcMVuf',
+            type: "get",
+            dataType: "jsonp",
+            jsonp: "callback",
+            success: function (data) {
+                if (typeof callback == "function") {
+                    callback(data);
+                }
+            }
+        });
+    }
+    ,
     //将经纬度转换成城市名和街道地址，参见百度地图接口文档：http://developer.baidu.com/map/index.php?title=webapi/guide/webservice-geocoding  
     cityname: function (latitude, longitude, callback) {
         $.ajax({
-            url: 'http://api.map.baidu.com/geocoder/v2/?ak=btsVVWf0TM1zUBEbzFz6QqWF&callback=renderReverse&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+            url: 'http://api.map.baidu.com/geocoder/v2/?ak=9lQZq4gCDUYjEh0EhPT6qKt5GEvcMVuf&callback=renderReverse&location=' + latitude + ',' + longitude + '&output=json&pois=1',
             type: "get",
             dataType: "jsonp",
             jsonp: "callback",
@@ -106,7 +121,8 @@
                 var data = {
                     latitude: latitude,
                     longitude: longitude,
-                    cityname: cityname
+                    cityname: cityname,
+                    address: province + cityname + district + street + street_number + formatted_address
                 };
                 if (typeof callback == "function") {
                     callback(data);
